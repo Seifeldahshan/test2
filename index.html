@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech — Enterprise Solutions for the Modern Stack</title>
+  <meta name="description" content="Tech delivers enterprise-grade cloud infrastructure, AI integration, and cybersecurity solutions that scale with your business.">
+  
+  <!-- Google Fonts: Fraunces (Serif with optical size and weight 300-500) & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Pill Navigation Bar -->
+  <nav class="nav-pill-container" id="main-nav">
+    <div class="nav-pill">
+      <!-- 8-dot cluster logo -->
+      <a href="#" class="nav-brand" aria-label="Tech Home">
+        <div class="dot-cluster" aria-hidden="true">
+          <span></span><span></span><span></span>
+          <span></span><span class="center-empty"></span><span></span>
+          <span></span><span></span><span></span>
+        </div>
+        <span class="brand-name">Tech</span>
+      </a>
+
+      <!-- Navigation links -->
+      <div class="nav-links">
+        <a href="#solutions" class="nav-link active">Solutions</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#careers" class="nav-link">Careers</a>
+      </div>
+
+      <!-- Search Input -->
+      <div class="nav-search">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="global-search" placeholder="Search solutions..." aria-label="Search solutions">
+      </div>
+
+      <!-- Action Cluster -->
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button class="icon-button theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button class="btn btn-primary nav-signup-btn" id="btn-request-demo">Request a Demo</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page-container">
+    
+    <!-- Hero Section with Orbiting Photos -->
+    <section class="hero-section" id="hero">
+      
+      <!-- Orbiting Photo Ring Container -->
+      <div class="orbit-container" id="orbit-container">
+        <!-- Outer Ring Photos — tech imagery -->
+        <div class="orbit-card" data-orbit-rx="48" data-orbit-ry="42" data-angle="0" data-speed="0.12" data-size="140" data-tilt="-8">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" alt="Circuit Board" loading="eager">
+        </div>
+        <div class="orbit-card" data-orbit-rx="50" data-orbit-ry="40" data-angle="30" data-speed="0.11" data-size="120" data-tilt="12">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80" alt="Data Visualization" loading="eager">
+        </div>
+        <div class="orbit-card" data-orbit-rx="46" data-orbit-ry="44" data-angle="60" data-speed="0.13" data-size="130" data-tilt="-5">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=400&q=80" alt="Server Room" loading="eager">
+        </div>
+        <div class="orbit-card" data-orbit-rx="52" data-orbit-ry="38" data-angle="90" data-speed="0.10" data-size="110" data-tilt="15">
+          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=400&q=80" alt="Cybersecurity" loading="eager">
+        </div>
+        <div class="orbit-card" data-orbit-rx="51" data-orbit-ry="39" data-angle="130" data-speed="0.12" data-size="125" data-tilt="7">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Tech Office" loading="eager">
+        </div>
+        <div class="orbit-card" data-orbit-rx="49" data-orbit-ry="41" data-angle="170" data-speed="0.11" data-size="135" data-tilt="-14">
+          <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=400&q=80" alt="AI Neural Network" loading="eager">
+        </div>
+        <div class="orbit-card" data-orbit-rx="53" data-orbit-ry="37" data-angle="210" data-speed="0.13" data-size="115" data-tilt="9">
+          <img src="https://images.unsplash.com/photo-1563986768609-322da13575f2?auto=format&fit=crop&w=400&q=80" alt="Cloud Computing" loading="eager">
+        </div>
+        <div class="orbit-card" data-orbit-rx="48" data-orbit-ry="42" data-angle="240" data-speed="0.10" data-size="145" data-tilt="-6">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Team Collaboration" loading="eager">
+        </div>
+        <div class="orbit-card" data-orbit-rx="50" data-orbit-ry="40" data-angle="270" data-speed="0.14" data-size="120" data-tilt="11">
+          <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=400&q=80" alt="Dashboard Analytics" loading="eager">
+        </div>
+        <div class="orbit-card" data-orbit-rx="46" data-orbit-ry="44" data-angle="300" data-speed="0.12" data-size="130" data-tilt="-12">
+          <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=400&q=80" alt="Code on Laptop" loading="eager">
+        </div>
+        <div class="orbit-card" data-orbit-rx="52" data-orbit-ry="38" data-angle="330" data-speed="0.11" data-size="110" data-tilt="8">
+          <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=400&q=80" alt="Matrix Data" loading="eager">
+        </div>
+
+        <!-- Inner Ring Photos (smaller, more ghostly) -->
+        <div class="orbit-card orbit-inner" data-orbit-rx="30" data-orbit-ry="26" data-angle="15" data-speed="0.08" data-size="80" data-tilt="6">
+          <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=300&q=80" alt="Code IDE" loading="eager">
+        </div>
+        <div class="orbit-card orbit-inner" data-orbit-rx="32" data-orbit-ry="24" data-angle="75" data-speed="0.07" data-size="70" data-tilt="-9">
+          <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=300&q=80" alt="Laptop Glow" loading="eager">
+        </div>
+        <div class="orbit-card orbit-inner" data-orbit-rx="31" data-orbit-ry="25" data-angle="195" data-speed="0.08" data-size="65" data-tilt="-7">
+          <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=300&q=80" alt="Workspace" loading="eager">
+        </div>
+        <div class="orbit-card orbit-inner" data-orbit-rx="29" data-orbit-ry="27" data-angle="255" data-speed="0.09" data-size="85" data-tilt="10">
+          <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=300&q=80" alt="Retro Tech" loading="eager">
+        </div>
+        <div class="orbit-card orbit-inner" data-orbit-rx="33" data-orbit-ry="23" data-angle="315" data-speed="0.07" data-size="72" data-tilt="-11">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=300&q=80" alt="Monitor Code" loading="eager">
+        </div>
+
+        <!-- Extra scattered ghost cards (very faint, tiny) -->
+        <div class="orbit-card orbit-ghost" data-orbit-rx="22" data-orbit-ry="18" data-angle="45" data-speed="0.06" data-size="50" data-tilt="5">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=200&q=60" alt="Ghost Circuit" loading="eager">
+        </div>
+        <div class="orbit-card orbit-ghost" data-orbit-rx="24" data-orbit-ry="20" data-angle="165" data-speed="0.05" data-size="45" data-tilt="-8">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=200&q=60" alt="Ghost Data" loading="eager">
+        </div>
+        <div class="orbit-card orbit-ghost" data-orbit-rx="20" data-orbit-ry="16" data-angle="285" data-speed="0.06" data-size="55" data-tilt="12">
+          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=200&q=60" alt="Ghost Security" loading="eager">
+        </div>
+      </div>
+
+      <!-- Hero Center Content -->
+      <div class="hero-content">
+        <span class="eyebrow-label">TECH</span>
+        <h1 class="display-headline">Build faster.<br>Scale smarter.</h1>
+        <p class="hero-subtext">Enterprise-grade infrastructure, AI integration, and cybersecurity — engineered to accelerate your digital transformation.</p>
+        
+        <div class="button-row">
+          <button class="btn btn-primary" id="btn-hero-primary">Request a Meeting</button>
+          <button class="btn btn-secondary" id="btn-hero-secondary">View Solutions</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Heavy Scroll-Expanding Tech Image Showcase Section -->
+    <section class="video-section" id="film-section">
+      <div class="video-container" id="video-trigger">
+        <img class="video-poster" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2400&q=90" alt="High speed tech circuit and cloud infrastructure">
+        
+        <div class="video-overlay">
+          <!-- 3x3 Dot Cluster Indicator -->
+          <div class="dot-cluster-overlay" aria-hidden="true">
+            <span></span><span></span><span></span>
+            <span></span><span class="center-empty"></span><span></span>
+            <span></span><span></span><span></span>
+          </div>
+
+          <!-- Tech Split Title Bar -->
+          <div class="video-title-bar">
+            <span class="video-title-left">Tech Stack</span>
+            <div class="video-badge">Cloud & Neural Grid</div>
+            <span class="video-title-right">Solutions</span>
+          </div>
+
+          <!-- Tech Subtitle Caption -->
+          <span class="video-caption">Real-time data processing, zero-trust security, and scalable cloud systems</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter & Curation Bar -->
+    <section class="filter-section" id="solutions">
+      <div class="filter-header">
+        <div class="filter-title-group">
+          <h2 class="section-heading">Our Solutions</h2>
+          <p class="section-sub">End-to-end technology services designed for performance, security, and scale.</p>
+        </div>
+        <div class="filter-tags" id="category-filters">
+          <button class="tag-pill active" data-filter="all">All Solutions</button>
+          <button class="tag-pill" data-filter="cloud">Cloud</button>
+          <button class="tag-pill" data-filter="ai">AI & ML</button>
+          <button class="tag-pill" data-filter="security">Security</button>
+          <button class="tag-pill" data-filter="devops">DevOps</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Three-Column Feature Card Grid -->
+    <section class="feature-grid-section">
+      <div class="feature-grid" id="feature-grid">
+        
+        <!-- Card 1: Cloud Infrastructure -->
+        <article class="feature-card" data-category="cloud">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Cloud Server Infrastructure" loading="lazy">
+            <div class="card-actions-hover">
+              <button class="card-inspect-btn" title="Learn more">Learn More</button>
+            </div>
+          </div>
+          <div class="card-caption">
+            <h3 class="card-label">Cloud Infrastructure</h3>
+            <span class="card-meta">Multi-cloud · Auto-scaling · 99.99% uptime</span>
+          </div>
+        </article>
+
+        <!-- Card 2: AI & Machine Learning -->
+        <article class="feature-card" data-category="ai">
+          <div class="card-image-wrap" id="ai-card-wrap">
+            <img class="ai-target-image" src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=800&q=80" alt="AI Neural Network Visualization" loading="lazy">
+            
+            <!-- AI Capability Overlay -->
+            <div class="ai-overlay-card" id="ai-overlay">
+              <div class="ai-overlay-header">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+                <h4 class="ai-title">AI Powered</h4>
+              </div>
+              <p class="ai-body">Real-time ML inference at enterprise scale</p>
+              <div class="ai-buttons">
+                <button class="ai-btn ai-btn-show active" data-action="show">Preview</button>
+                <button class="ai-btn ai-btn-blur" data-action="blur">Abstract</button>
+                <button class="ai-btn ai-btn-hide" data-action="hide">Minimal</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-caption">
+            <h3 class="card-label">AI & Machine Learning</h3>
+            <span class="card-meta">GPT integration · Computer vision · Predictive analytics</span>
+          </div>
+        </article>
+
+        <!-- Card 3: Cybersecurity -->
+        <article class="feature-card" data-category="security">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Cybersecurity Shield" loading="lazy">
+            <div class="card-actions-hover">
+              <button class="card-inspect-btn" title="Learn more">Learn More</button>
+            </div>
+          </div>
+          <div class="card-caption">
+            <h3 class="card-label">Cybersecurity</h3>
+            <span class="card-meta">Zero-trust architecture · Threat detection · SOC 2 compliant</span>
+          </div>
+        </article>
+
+        <!-- Card 4: DevOps & CI/CD -->
+        <article class="feature-card" data-category="devops">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80" alt="DevOps Pipeline" loading="lazy">
+            <div class="card-actions-hover">
+              <button class="card-inspect-btn" title="Learn more">Learn More</button>
+            </div>
+          </div>
+          <div class="card-caption">
+            <h3 class="card-label">DevOps & CI/CD</h3>
+            <span class="card-meta">Automated pipelines · Container orchestration · IaC</span>
+          </div>
+        </article>
+
+        <!-- Card 5: Data Analytics -->
+        <article class="feature-card" data-category="ai cloud">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=800&q=80" alt="Data Analytics Dashboard" loading="lazy">
+            <div class="card-actions-hover">
+              <button class="card-inspect-btn" title="Learn more">Learn More</button>
+            </div>
+          </div>
+          <div class="card-caption">
+            <h3 class="card-label">Data Analytics</h3>
+            <span class="card-meta">Real-time dashboards · Business intelligence · ETL pipelines</span>
+          </div>
+        </article>
+
+        <!-- Card 6: Managed Services -->
+        <article class="feature-card" data-category="cloud devops">
+          <div class="card-image-wrap">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" alt="Managed IT Services Team" loading="lazy">
+            <div class="card-actions-hover">
+              <button class="card-inspect-btn" title="Learn more">Learn More</button>
+            </div>
+          </div>
+          <div class="card-caption">
+            <h3 class="card-label">Managed Services</h3>
+            <span class="card-meta">24/7 monitoring · SLA-backed · Dedicated support team</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Platform Stats Section -->
+    <section class="studio-section" id="about">
+      <div class="studio-card">
+        <div class="studio-info">
+          <span class="eyebrow-label">WHY TECH</span>
+          <h2 class="display-heading-sm">Infrastructure that grows with your ambition.</h2>
+          <p class="studio-body">From startup MVPs to Fortune 500 migrations — our platform handles the complexity so your team can focus on building what matters.</p>
+          <div class="button-row">
+            <button class="btn btn-primary" id="btn-add-tile">Schedule a Call</button>
+            <button class="btn btn-secondary" id="btn-reset-collage">View Case Studies</button>
+          </div>
+        </div>
+        <div class="studio-stat-box">
+          <div class="stat-item">
+            <span class="stat-num">99.99%</span>
+            <span class="stat-desc">Uptime SLA</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">2,400+</span>
+            <span class="stat-desc">Enterprise Clients</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">< 50ms</span>
+            <span class="stat-desc">Avg. Latency</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="dot-cluster" aria-hidden="true">
+            <span></span><span></span><span></span>
+            <span></span><span class="center-empty"></span><span></span>
+            <span></span><span></span><span></span>
+          </div>
+          <span class="brand-name">Tech</span>
+        </div>
+        <p class="footer-tagline">Engineering the infrastructure of tomorrow.</p>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2026 Tech Inc. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Privacy</a>
+          <a href="#" class="footer-link">Terms</a>
+          <a href="#" class="footer-link">Security</a>
+          <a href="#" class="footer-link">Status</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Video Modal -->
+  <div class="modal-overlay" id="video-modal">
+    <div class="modal-content video-modal-content">
+      <button class="modal-close" id="close-video-modal" aria-label="Close modal">&times;</button>
+      <div class="video-player-wrapper">
+        <iframe id="video-iframe" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=0" title="Tech Platform Overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="modal-caption-bar">
+        <h4>TECH — Platform Overview</h4>
+        <p>Enterprise infrastructure · 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Solution Detail Lightbox Modal -->
+  <div class="modal-overlay" id="image-modal">
+    <div class="modal-content image-modal-content">
+      <button class="modal-close" id="close-image-modal" aria-label="Close modal">&times;</button>
+      <div class="lightbox-body">
+        <img id="lightbox-img" src="" alt="Solution Detail">
+        <div class="lightbox-info">
+          <span class="eyebrow-label" id="lightbox-category">TECH SOLUTIONS</span>
+          <h3 id="lightbox-title" class="lightbox-title">Solution</h3>
+          <p id="lightbox-desc" class="lightbox-desc">Enterprise-grade technology built for performance and reliability.</p>
+          <div class="lightbox-actions">
+            <button class="btn btn-primary" id="btn-save-tile">Request Info</button>
+            <button class="btn btn-secondary" id="btn-share-tile">Share</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
