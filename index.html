@@ -1,394 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech — Enterprise Solutions for the Modern Stack</title>
-  <meta name="description" content="Tech delivers enterprise-grade cloud infrastructure, AI integration, and cybersecurity solutions that scale with your business.">
-  
+  <meta name="description"
+    content="Tech delivers enterprise-grade cloud infrastructure, AI integration, and cybersecurity solutions that scale with your business.">
+
   <!-- Google Fonts: Fraunces (Serif with optical size and weight 300-500) & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Inter:wght@400;500&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-  <!-- Floating Pill Navigation Bar -->
-  <nav class="nav-pill-container" id="main-nav">
-    <div class="nav-pill">
-      <!-- 8-dot cluster logo -->
-      <a href="#" class="nav-brand" aria-label="Tech Home">
-        <div class="dot-cluster" aria-hidden="true">
-          <span></span><span></span><span></span>
-          <span></span><span class="center-empty"></span><span></span>
-          <span></span><span></span><span></span>
-        </div>
-        <span class="brand-name">Tech</span>
-      </a>
-
-      <!-- Navigation links -->
-      <div class="nav-links">
-        <a href="#solutions" class="nav-link active">Solutions</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#careers" class="nav-link">Careers</a>
+<!-- Preloader Overlay (Phase 1 & Phase 2) -->
+<div class="preloader" id="preloader">
+  <div class="preloader-panel preloader-panel-2"></div>
+  <div class="preloader-panel preloader-panel-1">
+    <div class="preloader-content">
+      <div class="preloader-brand">
+        <span class="brand-name">EXACT</span>
       </div>
+    </div>
+  </div>
+</div>
 
-      <!-- Search Input -->
-      <div class="nav-search">
-        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+<!-- Floating Pill Navigation Bar -->
+<nav class="nav-pill-container" id="main-nav">
+  <div class="nav-pill">
+    <!-- 8-dot cluster logo -->
+    <a href="#" class="nav-brand" aria-label="EXACT Home">
+      <span class="brand-name">EXACT</span>
+    </a>
+
+    <!-- Navigation links -->
+    <div class="nav-links">
+      <a href="#solutions" class="nav-link active">Solutions</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#careers" class="nav-link">Careers</a>
+    </div>
+
+    <!-- Search Input -->
+    <div class="nav-search">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="global-search" placeholder="Search solutions..." aria-label="Search solutions">
+    </div>
+
+    <!-- Action Cluster -->
+    <div class="nav-actions">
+      <!-- Theme Toggle -->
+      <button class="icon-button theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
         </svg>
-        <input type="text" id="global-search" placeholder="Search solutions..." aria-label="Search solutions">
-      </div>
+        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" style="display:none;">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
 
-      <!-- Action Cluster -->
-      <div class="nav-actions">
-        <!-- Theme Toggle -->
-        <button class="icon-button theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
+      <button class="btn btn-primary nav-signup-btn" id="btn-request-demo">Request a Demo</button>
+    </div>
+  </div>
+</nav>
 
-        <button class="btn btn-primary nav-signup-btn" id="btn-request-demo">Request a Demo</button>
+<main class="page-container">
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+
+    <!-- Hero Left Content -->
+    <div class="hero-content">
+      <span class="eyebrow-label">ABOUT EXACT</span>
+      <h1 class="display-headline hero-headline-masked">
+        <span class="mask-line"><span class="mask-inner">Driven by insight.</span></span>
+        <span class="mask-line"><span class="mask-inner">Focused on results.</span></span>
+      </h1>
+      <p class="hero-subtext">EXACT helps organizations modernize technology, improve operational efficiency, and
+        accelerate digital transformation through consulting, architecture, integration, data, AI, cloud, and ongoing
+        support.</p>
+
+      <div class="button-row">
+        <a href="#solutions" class="btn btn-primary" id="btn-hero-primary">Explore Solutions</a>
+        <a href="#about" class="btn btn-secondary" id="btn-hero-secondary">Why EXACT</a>
       </div>
     </div>
-  </nav>
 
-  <main class="page-container">
-    
-    <!-- Hero Section with Orbiting Photos -->
-    <section class="hero-section" id="hero">
-      
-      <!-- Orbiting Photo Ring Container -->
-      <div class="orbit-container" id="orbit-container">
-        <!-- Outer Ring Photos — tech imagery -->
-        <div class="orbit-card" data-orbit-rx="48" data-orbit-ry="42" data-angle="0" data-speed="0.12" data-size="140" data-tilt="-8">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" alt="Circuit Board" loading="eager">
-        </div>
-        <div class="orbit-card" data-orbit-rx="50" data-orbit-ry="40" data-angle="30" data-speed="0.11" data-size="120" data-tilt="12">
-          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80" alt="Data Visualization" loading="eager">
-        </div>
-        <div class="orbit-card" data-orbit-rx="46" data-orbit-ry="44" data-angle="60" data-speed="0.13" data-size="130" data-tilt="-5">
-          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=400&q=80" alt="Server Room" loading="eager">
-        </div>
-        <div class="orbit-card" data-orbit-rx="52" data-orbit-ry="38" data-angle="90" data-speed="0.10" data-size="110" data-tilt="15">
-          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=400&q=80" alt="Cybersecurity" loading="eager">
-        </div>
-        <div class="orbit-card" data-orbit-rx="51" data-orbit-ry="39" data-angle="130" data-speed="0.12" data-size="125" data-tilt="7">
-          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Tech Office" loading="eager">
-        </div>
-        <div class="orbit-card" data-orbit-rx="49" data-orbit-ry="41" data-angle="170" data-speed="0.11" data-size="135" data-tilt="-14">
-          <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=400&q=80" alt="AI Neural Network" loading="eager">
-        </div>
-        <div class="orbit-card" data-orbit-rx="53" data-orbit-ry="37" data-angle="210" data-speed="0.13" data-size="115" data-tilt="9">
-          <img src="https://images.unsplash.com/photo-1563986768609-322da13575f2?auto=format&fit=crop&w=400&q=80" alt="Cloud Computing" loading="eager">
-        </div>
-        <div class="orbit-card" data-orbit-rx="48" data-orbit-ry="42" data-angle="240" data-speed="0.10" data-size="145" data-tilt="-6">
-          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Team Collaboration" loading="eager">
-        </div>
-        <div class="orbit-card" data-orbit-rx="50" data-orbit-ry="40" data-angle="270" data-speed="0.14" data-size="120" data-tilt="11">
-          <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=400&q=80" alt="Dashboard Analytics" loading="eager">
-        </div>
-        <div class="orbit-card" data-orbit-rx="46" data-orbit-ry="44" data-angle="300" data-speed="0.12" data-size="130" data-tilt="-12">
-          <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=400&q=80" alt="Code on Laptop" loading="eager">
-        </div>
-        <div class="orbit-card" data-orbit-rx="52" data-orbit-ry="38" data-angle="330" data-speed="0.11" data-size="110" data-tilt="8">
-          <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=400&q=80" alt="Matrix Data" loading="eager">
+    <!-- Hero Right Image -->
+    <div class="hero-image">
+      <img src="assets/hero-section%20side%20photo.jpg" alt="EXACT Digital Consulting" loading="eager">
+    </div>
+  </section>
+
+  <!-- Scroll-Expanding Image Showcase Section -->
+  <section class="video-section" id="film-section">
+    <div class="video-container" id="video-trigger">
+      <img class="video-poster" src="assets/filler-image.jpg" alt="EXACT Enterprise Integration Grid">
+
+      <div class="video-overlay">
+
+        <!-- Centered Catchphrase with Transition -->
+        <div class="showcase-center-content">
+          <h2 class="showcase-catchphrase">Transforming Complexity<br>Into Intelligence</h2>
         </div>
 
-        <!-- Inner Ring Photos (smaller, more ghostly) -->
-        <div class="orbit-card orbit-inner" data-orbit-rx="30" data-orbit-ry="26" data-angle="15" data-speed="0.08" data-size="80" data-tilt="6">
-          <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=300&q=80" alt="Code IDE" loading="eager">
-        </div>
-        <div class="orbit-card orbit-inner" data-orbit-rx="32" data-orbit-ry="24" data-angle="75" data-speed="0.07" data-size="70" data-tilt="-9">
-          <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=300&q=80" alt="Laptop Glow" loading="eager">
-        </div>
-        <div class="orbit-card orbit-inner" data-orbit-rx="31" data-orbit-ry="25" data-angle="195" data-speed="0.08" data-size="65" data-tilt="-7">
-          <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=300&q=80" alt="Workspace" loading="eager">
-        </div>
-        <div class="orbit-card orbit-inner" data-orbit-rx="29" data-orbit-ry="27" data-angle="255" data-speed="0.09" data-size="85" data-tilt="10">
-          <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=300&q=80" alt="Retro Tech" loading="eager">
-        </div>
-        <div class="orbit-card orbit-inner" data-orbit-rx="33" data-orbit-ry="23" data-angle="315" data-speed="0.07" data-size="72" data-tilt="-11">
-          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=300&q=80" alt="Monitor Code" loading="eager">
-        </div>
-
-        <!-- Extra scattered ghost cards (very faint, tiny) -->
-        <div class="orbit-card orbit-ghost" data-orbit-rx="22" data-orbit-ry="18" data-angle="45" data-speed="0.06" data-size="50" data-tilt="5">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=200&q=60" alt="Ghost Circuit" loading="eager">
-        </div>
-        <div class="orbit-card orbit-ghost" data-orbit-rx="24" data-orbit-ry="20" data-angle="165" data-speed="0.05" data-size="45" data-tilt="-8">
-          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=200&q=60" alt="Ghost Data" loading="eager">
-        </div>
-        <div class="orbit-card orbit-ghost" data-orbit-rx="20" data-orbit-ry="16" data-angle="285" data-speed="0.06" data-size="55" data-tilt="12">
-          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=200&q=60" alt="Ghost Security" loading="eager">
-        </div>
+        <!-- Tech Subtitle Caption -->
+        <span class="video-caption">Combining premier platforms — IBM, Red Hat, Spring & AI — with structured delivery
+          practices</span>
       </div>
+    </div>
+  </section>
 
-      <!-- Hero Center Content -->
-      <div class="hero-content">
-        <span class="eyebrow-label">TECH</span>
-        <h1 class="display-headline">Build faster.<br>Scale smarter.</h1>
-        <p class="hero-subtext">Enterprise-grade infrastructure, AI integration, and cybersecurity — engineered to accelerate your digital transformation.</p>
-        
+  <!-- Filter & Curation Bar -->
+  <section class="filter-section" id="solutions">
+    <div class="filter-header">
+      <div class="filter-title-group">
+        <h2 class="section-heading">Our Solutions</h2>
+        <p class="section-sub">End-to-end digital services across integration, data, AI, cloud, process automation, and
+          professional training.</p>
+      </div>
+      <div class="filter-tags" id="category-filters">
+        <button class="tag-pill active" data-filter="all">All Solutions</button>
+        <button class="tag-pill" data-filter="integration">Integration & Middleware</button>
+        <button class="tag-pill" data-filter="data-ai">Data & AI</button>
+        <button class="tag-pill" data-filter="automation">Automation & Process</button>
+        <button class="tag-pill" data-filter="cloud">Cloud & Infra</button>
+        <button class="tag-pill" data-filter="training">Professional Enablement</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ten-Card Feature Grid for EXACT Portfolio (Wide-Range Overlay Cards) -->
+  <section class="feature-grid-section">
+    <div class="feature-grid" id="feature-grid">
+
+      <!-- Card 1: Enterprise Integration & Middleware -->
+      <article class="feature-card" data-category="integration" data-solution="1">
+        <div class="card-inner-frame">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
+            alt="Enterprise Integration & Middleware" loading="lazy">
+          <div class="card-overlay-gradient"></div>
+          <div class="card-content-bottom">
+            <span class="card-category-tag">Enterprise Integration</span>
+            <h3 class="card-label">Enterprise Integration & Middleware</h3>
+            <div class="card-meta-row">
+              <span class="card-meta-pill">⚡ IBM CP4I</span>
+              <span class="card-meta-pill">MQ · App Connect</span>
+            </div>
+            <button class="card-inspect-btn">Explore Solution</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2: API Management & Digital Connectivity -->
+      <article class="feature-card" data-category="integration" data-solution="2">
+        <div class="card-inner-frame">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+            alt="API Management & Digital Connectivity" loading="lazy">
+          <div class="card-overlay-gradient"></div>
+          <div class="card-content-bottom">
+            <span class="card-category-tag">API Connectivity</span>
+            <h3 class="card-label">API Management & Connectivity</h3>
+            <div class="card-meta-row">
+              <span class="card-meta-pill">⚡ REST / GraphQL</span>
+              <span class="card-meta-pill">API Connect Portal</span>
+            </div>
+            <button class="card-inspect-btn">Explore Solution</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3: Java Spring Application Services -->
+      <article class="feature-card" data-category="integration" data-solution="3">
+        <div class="card-inner-frame">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+            alt="Java Spring Application Services" loading="lazy">
+          <div class="card-overlay-gradient"></div>
+          <div class="card-content-bottom">
+            <span class="card-category-tag">Application Engineering</span>
+            <h3 class="card-label">Java Spring Application Services</h3>
+            <div class="card-meta-row">
+              <span class="card-meta-pill">⚡ Spring Boot</span>
+              <span class="card-meta-pill">Microservices Architecture</span>
+            </div>
+            <button class="card-inspect-btn">Explore Solution</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4: Information Integration & Data Governance -->
+      <article class="feature-card" data-category="data-ai" data-solution="4">
+        <div class="card-inner-frame">
+          <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=1200&q=80"
+            alt="Information Integration & Data Governance" loading="lazy">
+          <div class="card-overlay-gradient"></div>
+          <div class="card-content-bottom">
+            <span class="card-category-tag">Data Governance</span>
+            <h3 class="card-label">Information Integration & Governance</h3>
+            <div class="card-meta-row">
+              <span class="card-meta-pill">⚡ IBM InfoSphere MDM</span>
+              <span class="card-meta-pill">Master Data Control</span>
+            </div>
+            <button class="card-inspect-btn">Explore Solution</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 5: Business Process Transformation & Automation -->
+      <article class="feature-card" data-category="automation" data-solution="5">
+        <div class="card-inner-frame">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+            alt="Business Process Transformation & Automation" loading="lazy">
+          <div class="card-overlay-gradient"></div>
+          <div class="card-content-bottom">
+            <span class="card-category-tag">Process Automation</span>
+            <h3 class="card-label">Process Transformation & Automation</h3>
+            <div class="card-meta-row">
+              <span class="card-meta-pill">⚡ IBM BAW & ODM</span>
+              <span class="card-meta-pill">Decision Rules & RPA</span>
+            </div>
+            <button class="card-inspect-btn">Explore Solution</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 6: Information Management, Data Platforms & AI -->
+      <article class="feature-card" data-category="data-ai" data-solution="6">
+        <div class="card-inner-frame">
+          <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=1200&q=80"
+            alt="Information Management, Data Platforms & AI" loading="lazy">
+          <div class="card-overlay-gradient"></div>
+          <div class="card-content-bottom">
+            <span class="card-category-tag">AI & Data Platforms</span>
+            <h3 class="card-label">Data Platforms & AI Enablement</h3>
+            <div class="card-meta-row">
+              <span class="card-meta-pill">⚡ watsonx.ai</span>
+              <span class="card-meta-pill">Cloud Pak for Data</span>
+            </div>
+            <button class="card-inspect-btn">Explore Solution</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 7: Predictive & Advanced Analytics -->
+      <article class="feature-card" data-category="data-ai" data-solution="7">
+        <div class="card-inner-frame">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+            alt="Predictive & Advanced Analytics" loading="lazy">
+          <div class="card-overlay-gradient"></div>
+          <div class="card-content-bottom">
+            <span class="card-category-tag">Predictive Analytics</span>
+            <h3 class="card-label">Predictive & Advanced Analytics</h3>
+            <div class="card-meta-row">
+              <span class="card-meta-pill">⚡ IBM SPSS Modeler</span>
+              <span class="card-meta-pill">Prescriptive ML Models</span>
+            </div>
+            <button class="card-inspect-btn">Explore Solution</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 8: Enterprise Application Infrastructure -->
+      <article class="feature-card" data-category="cloud" data-solution="8">
+        <div class="card-inner-frame">
+          <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80"
+            alt="Enterprise Application Infrastructure" loading="lazy">
+          <div class="card-overlay-gradient"></div>
+          <div class="card-content-bottom">
+            <span class="card-category-tag">Infrastructure Hardening</span>
+            <h3 class="card-label">Enterprise App Infrastructure</h3>
+            <div class="card-meta-row">
+              <span class="card-meta-pill">⚡ IBM WebSphere</span>
+              <span class="card-meta-pill">HA & Cluster Security</span>
+            </div>
+            <button class="card-inspect-btn">Explore Solution</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 9: Cloud & Hybrid Infrastructure Services -->
+      <article class="feature-card" data-category="cloud" data-solution="9">
+        <div class="card-inner-frame">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
+            alt="Cloud & Hybrid Infrastructure Services" loading="lazy">
+          <div class="card-overlay-gradient"></div>
+          <div class="card-content-bottom">
+            <span class="card-category-tag">Cloud Transformation</span>
+            <h3 class="card-label">Cloud & Hybrid Infrastructure</h3>
+            <div class="card-meta-row">
+              <span class="card-meta-pill">⚡ Red Hat OpenShift</span>
+              <span class="card-meta-pill">Workload Migration</span>
+            </div>
+            <button class="card-inspect-btn">Explore Solution</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 10: Professional Training & Knowledge Transfer -->
+      <article class="feature-card" data-category="training" data-solution="10">
+        <div class="card-inner-frame">
+          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80"
+            alt="Professional Training & Knowledge Transfer" loading="lazy">
+          <div class="card-overlay-gradient"></div>
+          <div class="card-content-bottom">
+            <span class="card-category-tag">Knowledge Transfer</span>
+            <h3 class="card-label">Training & Knowledge Transfer</h3>
+            <div class="card-meta-row">
+              <span class="card-meta-pill">⚡ Instructor-Led Labs</span>
+              <span class="card-meta-pill">Operational Handover</span>
+            </div>
+            <button class="card-inspect-btn">Explore Solution</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Platform Stats & Value Proposition Section -->
+  <section class="studio-section" id="about">
+    <div class="studio-card">
+      <div class="studio-info">
+        <span class="eyebrow-label">WHY EXACT</span>
+        <h2 class="display-heading-sm">One partner across consulting, architecture, and delivery.</h2>
+        <p class="studio-body">We combine premier enterprise technology platforms—IBM, Red Hat, Automation Anywhere,
+          ManageEngine, and Dynatrace—with seasoned consultants and structured lifecycle practices to deliver measurable
+          outcomes.</p>
         <div class="button-row">
-          <button class="btn btn-primary" id="btn-hero-primary">Request a Meeting</button>
-          <button class="btn btn-secondary" id="btn-hero-secondary">View Solutions</button>
+          <button class="btn btn-primary" id="btn-add-tile">Schedule a Consultation</button>
+          <button class="btn btn-secondary" id="btn-reset-collage">View Delivery Framework</button>
         </div>
       </div>
-    </section>
-
-    <!-- Heavy Scroll-Expanding Tech Image Showcase Section -->
-    <section class="video-section" id="film-section">
-      <div class="video-container" id="video-trigger">
-        <img class="video-poster" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2400&q=90" alt="High speed tech circuit and cloud infrastructure">
-        
-        <div class="video-overlay">
-          <!-- 3x3 Dot Cluster Indicator -->
-          <div class="dot-cluster-overlay" aria-hidden="true">
-            <span></span><span></span><span></span>
-            <span></span><span class="center-empty"></span><span></span>
-            <span></span><span></span><span></span>
-          </div>
-
-          <!-- Tech Split Title Bar -->
-          <div class="video-title-bar">
-            <span class="video-title-left">Tech Stack</span>
-            <div class="video-badge">Cloud & Neural Grid</div>
-            <span class="video-title-right">Solutions</span>
-          </div>
-
-          <!-- Tech Subtitle Caption -->
-          <span class="video-caption">Real-time data processing, zero-trust security, and scalable cloud systems</span>
+      <div class="studio-stat-box">
+        <div class="stat-item">
+          <span class="stat-num">5-Phase</span>
+          <span class="stat-desc">Delivery Lifecycle</span>
         </div>
-      </div>
-    </section>
-
-    <!-- Filter & Curation Bar -->
-    <section class="filter-section" id="solutions">
-      <div class="filter-header">
-        <div class="filter-title-group">
-          <h2 class="section-heading">Our Solutions</h2>
-          <p class="section-sub">End-to-end technology services designed for performance, security, and scale.</p>
+        <div class="stat-item">
+          <span class="stat-num">100%</span>
+          <span class="stat-desc">Structured Handover</span>
         </div>
-        <div class="filter-tags" id="category-filters">
-          <button class="tag-pill active" data-filter="all">All Solutions</button>
-          <button class="tag-pill" data-filter="cloud">Cloud</button>
-          <button class="tag-pill" data-filter="ai">AI & ML</button>
-          <button class="tag-pill" data-filter="security">Security</button>
-          <button class="tag-pill" data-filter="devops">DevOps</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Three-Column Feature Card Grid -->
-    <section class="feature-grid-section">
-      <div class="feature-grid" id="feature-grid">
-        
-        <!-- Card 1: Cloud Infrastructure -->
-        <article class="feature-card" data-category="cloud">
-          <div class="card-image-wrap">
-            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Cloud Server Infrastructure" loading="lazy">
-            <div class="card-actions-hover">
-              <button class="card-inspect-btn" title="Learn more">Learn More</button>
-            </div>
-          </div>
-          <div class="card-caption">
-            <h3 class="card-label">Cloud Infrastructure</h3>
-            <span class="card-meta">Multi-cloud · Auto-scaling · 99.99% uptime</span>
-          </div>
-        </article>
-
-        <!-- Card 2: AI & Machine Learning -->
-        <article class="feature-card" data-category="ai">
-          <div class="card-image-wrap" id="ai-card-wrap">
-            <img class="ai-target-image" src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=800&q=80" alt="AI Neural Network Visualization" loading="lazy">
-            
-            <!-- AI Capability Overlay -->
-            <div class="ai-overlay-card" id="ai-overlay">
-              <div class="ai-overlay-header">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                </svg>
-                <h4 class="ai-title">AI Powered</h4>
-              </div>
-              <p class="ai-body">Real-time ML inference at enterprise scale</p>
-              <div class="ai-buttons">
-                <button class="ai-btn ai-btn-show active" data-action="show">Preview</button>
-                <button class="ai-btn ai-btn-blur" data-action="blur">Abstract</button>
-                <button class="ai-btn ai-btn-hide" data-action="hide">Minimal</button>
-              </div>
-            </div>
-          </div>
-          <div class="card-caption">
-            <h3 class="card-label">AI & Machine Learning</h3>
-            <span class="card-meta">GPT integration · Computer vision · Predictive analytics</span>
-          </div>
-        </article>
-
-        <!-- Card 3: Cybersecurity -->
-        <article class="feature-card" data-category="security">
-          <div class="card-image-wrap">
-            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Cybersecurity Shield" loading="lazy">
-            <div class="card-actions-hover">
-              <button class="card-inspect-btn" title="Learn more">Learn More</button>
-            </div>
-          </div>
-          <div class="card-caption">
-            <h3 class="card-label">Cybersecurity</h3>
-            <span class="card-meta">Zero-trust architecture · Threat detection · SOC 2 compliant</span>
-          </div>
-        </article>
-
-        <!-- Card 4: DevOps & CI/CD -->
-        <article class="feature-card" data-category="devops">
-          <div class="card-image-wrap">
-            <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80" alt="DevOps Pipeline" loading="lazy">
-            <div class="card-actions-hover">
-              <button class="card-inspect-btn" title="Learn more">Learn More</button>
-            </div>
-          </div>
-          <div class="card-caption">
-            <h3 class="card-label">DevOps & CI/CD</h3>
-            <span class="card-meta">Automated pipelines · Container orchestration · IaC</span>
-          </div>
-        </article>
-
-        <!-- Card 5: Data Analytics -->
-        <article class="feature-card" data-category="ai cloud">
-          <div class="card-image-wrap">
-            <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=800&q=80" alt="Data Analytics Dashboard" loading="lazy">
-            <div class="card-actions-hover">
-              <button class="card-inspect-btn" title="Learn more">Learn More</button>
-            </div>
-          </div>
-          <div class="card-caption">
-            <h3 class="card-label">Data Analytics</h3>
-            <span class="card-meta">Real-time dashboards · Business intelligence · ETL pipelines</span>
-          </div>
-        </article>
-
-        <!-- Card 6: Managed Services -->
-        <article class="feature-card" data-category="cloud devops">
-          <div class="card-image-wrap">
-            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" alt="Managed IT Services Team" loading="lazy">
-            <div class="card-actions-hover">
-              <button class="card-inspect-btn" title="Learn more">Learn More</button>
-            </div>
-          </div>
-          <div class="card-caption">
-            <h3 class="card-label">Managed Services</h3>
-            <span class="card-meta">24/7 monitoring · SLA-backed · Dedicated support team</span>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- Platform Stats Section -->
-    <section class="studio-section" id="about">
-      <div class="studio-card">
-        <div class="studio-info">
-          <span class="eyebrow-label">WHY TECH</span>
-          <h2 class="display-heading-sm">Infrastructure that grows with your ambition.</h2>
-          <p class="studio-body">From startup MVPs to Fortune 500 migrations — our platform handles the complexity so your team can focus on building what matters.</p>
-          <div class="button-row">
-            <button class="btn btn-primary" id="btn-add-tile">Schedule a Call</button>
-            <button class="btn btn-secondary" id="btn-reset-collage">View Case Studies</button>
-          </div>
-        </div>
-        <div class="studio-stat-box">
-          <div class="stat-item">
-            <span class="stat-num">99.99%</span>
-            <span class="stat-desc">Uptime SLA</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num">2,400+</span>
-            <span class="stat-desc">Enterprise Clients</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num">< 50ms</span>
-            <span class="stat-desc">Avg. Latency</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer-section">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="dot-cluster" aria-hidden="true">
-            <span></span><span></span><span></span>
-            <span></span><span class="center-empty"></span><span></span>
-            <span></span><span></span><span></span>
-          </div>
-          <span class="brand-name">Tech</span>
-        </div>
-        <p class="footer-tagline">Engineering the infrastructure of tomorrow.</p>
-      </div>
-
-      <div class="footer-bottom">
-        <span class="footer-copy">&copy; 2026 Tech Inc. All rights reserved.</span>
-        <div class="footer-links">
-          <a href="#" class="footer-link">Privacy</a>
-          <a href="#" class="footer-link">Terms</a>
-          <a href="#" class="footer-link">Security</a>
-          <a href="#" class="footer-link">Status</a>
-        </div>
-      </div>
-    </footer>
-
-  </main>
-
-  <!-- Video Modal -->
-  <div class="modal-overlay" id="video-modal">
-    <div class="modal-content video-modal-content">
-      <button class="modal-close" id="close-video-modal" aria-label="Close modal">&times;</button>
-      <div class="video-player-wrapper">
-        <iframe id="video-iframe" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=0" title="Tech Platform Overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="modal-caption-bar">
-        <h4>TECH — Platform Overview</h4>
-        <p>Enterprise infrastructure · 2026</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Solution Detail Lightbox Modal -->
-  <div class="modal-overlay" id="image-modal">
-    <div class="modal-content image-modal-content">
-      <button class="modal-close" id="close-image-modal" aria-label="Close modal">&times;</button>
-      <div class="lightbox-body">
-        <img id="lightbox-img" src="" alt="Solution Detail">
-        <div class="lightbox-info">
-          <span class="eyebrow-label" id="lightbox-category">TECH SOLUTIONS</span>
-          <h3 id="lightbox-title" class="lightbox-title">Solution</h3>
-          <p id="lightbox-desc" class="lightbox-desc">Enterprise-grade technology built for performance and reliability.</p>
-          <div class="lightbox-actions">
-            <button class="btn btn-primary" id="btn-save-tile">Request Info</button>
-            <button class="btn btn-secondary" id="btn-share-tile">Share</button>
-          </div>
+        <div class="stat-item">
+          <span class="stat-num">Enterprise</span>
+          <span class="stat-desc">Multi-Cloud Support</span>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <script src="script.js"></script>
+  <!-- Footer -->
+  <footer class="footer-section">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="brand-name">EXACT</span>
+      </div>
+      <p class="footer-tagline">Modernizing enterprise architecture with speed and precision.</p>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 EXACT Digital Services. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#solutions" class="footer-link">Solutions</a>
+        <a href="#about" class="footer-link">Methodology</a>
+        <a href="#" class="footer-link">Governance</a>
+        <a href="#" class="footer-link">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<!-- Rich Full-Page / Slide-Over Interactive Solution Detail Modal -->
+<div class="exact-modal-overlay" id="exact-solution-modal" aria-hidden="true">
+  <div class="exact-modal-container">
+
+    <!-- Top Modal Bar -->
+    <div class="exact-modal-header">
+      <div class="exact-modal-badge-group">
+        <span class="exact-badge" id="modal-category-badge">INTEGRATION</span>
+        <span class="exact-badge-sub">EXACT Digital Services Portfolio</span>
+      </div>
+      <button class="exact-modal-close" id="close-exact-modal" aria-label="Close detail modal">&times;</button>
+    </div>
+
+    <!-- Main Scrollable Body -->
+    <div class="exact-modal-body">
+
+      <!-- Grid Layout: Left Media & Lifecycle / Right Deep Technical Data -->
+      <div class="exact-modal-grid">
+
+        <!-- Left Column -->
+        <div class="exact-modal-left">
+          <div class="exact-modal-media">
+            <img id="modal-hero-img" src="" alt="EXACT Solution Visual">
+            <div class="exact-media-gradient"></div>
+          </div>
+
+          <div class="exact-lifecycle-box">
+            <h4 class="exact-box-title">EXACT Delivery Lifecycle</h4>
+            <div class="exact-lifecycle-steps">
+              <div class="lifecycle-step">
+                <span class="step-num">01</span>
+                <div class="step-text"><strong>Assess:</strong> Objectives, environment, risks & expected ROI.</div>
+              </div>
+              <div class="lifecycle-step">
+                <span class="step-num">02</span>
+                <div class="step-text"><strong>Design:</strong> Target architecture, security & roadmap.</div>
+              </div>
+              <div class="lifecycle-step">
+                <span class="step-num">03</span>
+                <div class="step-text"><strong>Implement:</strong> Configure, develop, integrate & test.</div>
+              </div>
+              <div class="lifecycle-step">
+                <span class="step-num">04</span>
+                <div class="step-text"><strong>Modernize:</strong> Cloud adoption & process optimization.</div>
+              </div>
+              <div class="lifecycle-step">
+                <span class="step-num">05</span>
+                <div class="step-text"><strong>Operate:</strong> Patches, maintenance & knowledge transfer.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="exact-modal-right">
+          <h2 class="exact-modal-title" id="modal-title">Enterprise Solution Title</h2>
+          <p class="exact-modal-overview" id="modal-overview">Full detailed overview of the EXACT solution offering.</p>
+
+          <!-- Enabling Technologies -->
+          <div class="exact-tech-section">
+            <h4 class="exact-box-title">Enabling Platforms & Technologies</h4>
+            <div class="exact-tech-tags" id="modal-tech-tags">
+              <!-- Injected dynamically via JS -->
+            </div>
+          </div>
+
+          <!-- Key Capabilities & Scope -->
+          <div class="exact-features-section">
+            <h4 class="exact-box-title">Core Capabilities & Delivery Scope</h4>
+            <ul class="exact-feature-list" id="modal-feature-list">
+              <!-- Injected dynamically via JS -->
+            </ul>
+          </div>
+
+          <!-- Value Proposition Impact -->
+          <div class="exact-impact-box">
+            <span class="impact-label">BUSINESS VALUE & OUTCOME</span>
+            <p class="impact-text" id="modal-impact-text">Quantifiable outcome description.</p>
+          </div>
+
+          <!-- Modal Action Cluster -->
+          <div class="exact-modal-actions">
+            <button class="btn btn-primary exact-modal-btn" id="btn-modal-consult">Request Solution Brief</button>
+            <button class="btn btn-secondary exact-modal-btn" id="btn-modal-close-action">Close Detail View</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- GSAP Core, ScrollTrigger, and Lenis Smooth Scroll CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="script.js"></script>
 </body>
+
 </html>
