@@ -358,7 +358,6 @@ body.is-loading {
 }
 
 /* Floating Pill Navigation Bar */
-/* Floating Pill Navigation Bar */
 .nav-pill-container {
   position: fixed;
   top: 20px;
@@ -371,11 +370,11 @@ body.is-loading {
   pointer-events: none;
 }
 
-/* Light Mode: Navigation Bar is Black / Deep Midnight Navy */
+/* White / Light Mode: Navigation Bar is Crisp White for black-logo.png */
 .nav-pill {
   pointer-events: auto;
-  background-color: #0b1724;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: #ffffff;
+  border: 1px solid rgba(24, 48, 72, 0.12);
   border-radius: var(--radius-pill);
   padding: 8px 24px;
   display: flex;
@@ -384,7 +383,7 @@ body.is-loading {
   gap: var(--spacing-24);
   max-width: var(--page-max-width);
   width: 100%;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -393,7 +392,7 @@ body.is-loading {
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: #ffffff;
+  color: #102131;
 }
 
 .brand-name {
@@ -410,7 +409,7 @@ body.is-loading {
 
 .nav-link {
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.75);
+  color: #4e6378;
   text-decoration: none;
   font-weight: var(--font-weight-regular);
   transition: color 0.2s ease;
@@ -418,8 +417,8 @@ body.is-loading {
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--brand-amber);
-  font-weight: 500;
+  color: var(--brand-navy);
+  font-weight: 600;
 }
 
 .nav-actions {
@@ -429,19 +428,13 @@ body.is-loading {
   margin-left: auto;
 }
 
-
-
-
-
-
-
 .icon-button {
   width: 32px;
   height: 32px;
   border-radius: 9999px;
   border: none;
   background: transparent;
-  color: #ffffff;
+  color: #102131;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -450,44 +443,44 @@ body.is-loading {
 }
 
 .icon-button:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(16, 33, 49, 0.08);
 }
 
-/* Dark Mode: Opposite — Navigation Bar is Crisp White */
+/* Dark Mode: Navigation Bar is Midnight Navy for white logo */
 [data-theme="dark"] .nav-pill {
-  background-color: #ffffff;
-  border-color: rgba(16, 33, 49, 0.12);
+  background-color: #0b1724;
+  border-color: rgba(255, 255, 255, 0.15);
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme="dark"] .nav-brand {
-  color: #102131;
+  color: #ffffff;
 }
 
 [data-theme="dark"] .nav-logo-img {
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.2));
 }
 
 [data-theme="dark"] .nav-link {
-  color: #4e6378;
+  color: rgba(255, 255, 255, 0.78);
 }
 
 [data-theme="dark"] .nav-link:hover,
 [data-theme="dark"] .nav-link.active {
-  color: var(--brand-navy);
-  font-weight: 600;
+  color: var(--brand-amber);
+  font-weight: 500;
 }
 
-
-
-
 [data-theme="dark"] .icon-button {
-  color: #102131;
+  color: #ffffff;
 }
 
 [data-theme="dark"] .icon-button:hover {
-  background-color: rgba(16, 33, 49, 0.08);
+  background-color: rgba(255, 255, 255, 0.15);
 }
+
+
+
 
 .nav-login-btn,
 .nav-signup-btn {

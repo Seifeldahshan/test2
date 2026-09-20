@@ -192,10 +192,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 1. Theme Toggle (Light Linen Canvas <-> Dark Canvas)
+  // 1. Theme Toggle & Dynamic Logo Switcher (White Mode <-> Dark Mode)
   const themeToggleBtn = document.getElementById('theme-toggle');
   const sunIcon = themeToggleBtn?.querySelector('.sun-icon');
   const moonIcon = themeToggleBtn?.querySelector('.moon-icon');
+
+  const updateThemeLogos = () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const navLogoImgs = document.querySelectorAll('.nav-logo-img');
+    const footerLogoImgs = document.querySelectorAll('.footer-logo-img');
+
+    navLogoImgs.forEach(img => {
+      img.src = isDark ? 'assets/logo-removebg-preview.png' : 'assets/black-logo.png';
+    });
+
+    footerLogoImgs.forEach(img => {
+      img.src = isDark ? 'assets/logo-removebg-preview.png' : 'assets/black-logo.png';
+    });
+  };
+
+  // Sync logos on initial page load
+  updateThemeLogos();
 
   themeToggleBtn?.addEventListener('click', () => {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -208,6 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (sunIcon) sunIcon.style.display = 'none';
       if (moonIcon) moonIcon.style.display = 'block';
     }
+    updateThemeLogos();
   });
 
   // 2. Orbiting Photo Animation Engine
