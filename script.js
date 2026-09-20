@@ -48,88 +48,99 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.set('.hero-content .button-row', { scale: 0.95, opacity: 0 });
     gsap.set('.hero-image', { scale: 1.05, opacity: 0 });
 
-    const masterTL = gsap.timeline();
+    const masterTL = gsap.timeline({
+      onComplete: () => {
+        if (preloaderEl) {
+          preloaderEl.classList.add('is-hidden');
+          preloaderEl.style.display = 'none';
+        }
+        document.body.classList.remove('is-loading');
+        if (lenis) lenis.start();
+        if (typeof ScrollTrigger !== 'undefined') {
+          ScrollTrigger.refresh();
+        }
+      }
+    });
 
     // PHASE 1 — CENTERED BRAND REVEAL IN PRELOADER
     masterTL.to('.preloader-brand', {
       opacity: 1,
       scale: 1,
-      duration: 1.1,
+      duration: 0.6,
       ease: 'power2.out'
-    }, 0.2);
+    }, 0.1);
 
     // Brief hold in center
-    masterTL.to({}, { duration: 0.6 });
+    masterTL.to({}, { duration: 0.25 });
 
     // PHASE 2 — EXIT WIPE
     masterTL.to('.preloader-content', {
       opacity: 0,
-      y: -24,
-      duration: 0.4,
-      ease: 'power2.inOut'
+      y: -20,
+      duration: 0.3,
+      ease: 'power2.in'
     });
 
     // Panel 1 translating up
     masterTL.to('.preloader-panel-1', {
       yPercent: -100,
-      duration: 1.0,
-      ease: 'power4.inOut'
+      duration: 0.7,
+      ease: 'power3.inOut'
     }, '-=0.1');
 
     // Panel 2 translating up (staggered behind panel 1)
     masterTL.to('.preloader-panel-2', {
       yPercent: -100,
-      duration: 1.0,
-      ease: 'power4.inOut'
-    }, '-=0.9');
+      duration: 0.7,
+      ease: 'power3.inOut',
+      onStart: () => {
+        // Unlock scroll early as panel wipes away to prevent layout jump
+        document.body.classList.remove('is-loading');
+        if (lenis) lenis.start();
+      }
+    }, '-=0.55');
 
-    // PHASE 3 — HERO REVEAL CASCADE (Overlaps tail of phase 2)
-    // 1. Navigation bar
+    // PHASE 3 — HERO REVEAL CASCADE
     masterTL.to('#main-nav', {
       y: 0,
       opacity: 1,
-      duration: 0.9,
+      duration: 0.6,
       ease: 'power3.out'
-    }, '-=0.7');
+    }, '-=0.4');
 
-    // 2. Eyebrow badge label
     masterTL.to('.hero-content .eyebrow-label', {
       y: 0,
       opacity: 1,
-      duration: 0.8,
+      duration: 0.5,
       ease: 'power3.out'
-    }, '-=0.75');
+    }, '-=0.45');
 
-    // 3. Headline masked lines (translateY(100%) -> 0 per line from behind hard edge)
     masterTL.to('.hero-headline-masked .mask-inner', {
       yPercent: 0,
-      duration: 1.1,
-      stagger: 0.12,
-      ease: 'power4.out'
-    }, '-=0.65');
+      duration: 0.7,
+      stagger: 0.08,
+      ease: 'power3.out'
+    }, '-=0.4');
 
-    // 4. Subheading
     masterTL.to('.hero-subtext', {
       y: 0,
       opacity: 1,
-      duration: 0.9,
+      duration: 0.5,
       ease: 'power3.out'
-    }, '-=0.8');
+    }, '-=0.5');
 
-    // 5. CTA button(s) opacity + scale(0.95 -> 1)
     masterTL.to('.hero-content .button-row', {
       scale: 1,
       opacity: 1,
-      duration: 0.8,
+      duration: 0.5,
       ease: 'power3.out'
-    }, '-=0.7');
+    }, '-=0.45');
 
-    // 6. Hero visual (scale 1.05 -> 1 & opacity) + float handoff
     masterTL.to('.hero-image', {
       scale: 1,
       opacity: 1,
-      duration: 1.2,
-      ease: 'power4.out',
+      duration: 0.7,
+      ease: 'power3.out',
       onComplete: () => {
         gsap.to('.hero-image img', {
           y: 6,
@@ -139,17 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
           yoyo: true
         });
       }
-    }, '-=0.9');
-
-    // Clean up preloader overlay & start Lenis smooth scroll
-    masterTL.add(() => {
-      if (preloaderEl) {
-        preloaderEl.style.display = 'none';
-        preloaderEl.style.pointerEvents = 'none';
-      }
-      document.body.classList.remove('is-loading');
-      if (lenis) lenis.start();
-    }, '-=1.0');
+    }, '-=0.6');
   }
 
   // PHASE 4 — SCROLL REVEALS (ScrollTrigger for downstream sections)
@@ -352,155 +353,63 @@ document.addEventListener('DOMContentLoaded', () => {
     expandObserver.observe(filmSection);
   }
 
-  // EXACT Solutions Portfolio Detailed Data Repository
+  // EXACT Solutions Portfolio Detailed Data Repository (4 Master Pillars)
   const exactSolutionsData = {
     "1": {
-      title: "Enterprise Integration & Middleware",
-      categoryBadge: "INTEGRATION & MIDDLEWARE",
-      overview: "EXACT connects applications, data, APIs, legacy platforms, and event-driven services across on-premises, cloud, and hybrid environments.",
+      title: "Enterprise Integration & API Architecture",
+      categoryBadge: "INTEGRATION & API CONNECTIVITY",
+      overview: "EXACT connects applications, data, APIs, legacy platforms, and microservices across on-premises, cloud, and hybrid environments with enterprise-grade security.",
       image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
-      technologies: ["IBM CP4I", "IBM App Connect", "IBM API Connect", "IBM MQ", "IBM Event Streams", "IBM Aspera", "IBM DataPower", "WebSphere", "Java Spring Boot"],
+      technologies: ["IBM CP4I", "IBM App Connect", "IBM API Connect", "IBM MQ", "Java Spring Boot", "GraphQL / REST", "OAuth 2.0 / mTLS"],
       features: [
-        "Assessment, requirements, ROI, and architecture definition",
-        "Installation, HA configuration, and performance tuning",
-        "API development, security, testing, and lifecycle governance",
-        "Controlled migration, upgrades, and 24/7 go-live support"
+        "Enterprise integration assessment & event-driven architecture definition",
+        "API lifecycle management, security gateways, and developer portal enablement",
+        "Java Spring Boot microservices engineering and modern API routing",
+        "Controlled migration, HA performance tuning, and 24/7 go-live support"
       ],
-      impact: "Eliminate data silos, reduce integration latency, and build a resilient event-driven architecture."
+      impact: "Eliminate data silos, reduce integration latency, and protect digital assets with zero-trust API security."
     },
     "2": {
-      title: "API Management & Digital Connectivity",
-      categoryBadge: "API & DIGITAL CONNECTIVITY",
-      overview: "EXACT helps organizations expose, secure, govern, and manage APIs for digital channels, partner connectivity, application modernization, and ecosystem integration.",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
-      technologies: ["REST APIs", "SOAP", "GraphQL", "API Manager", "Cloud Manager", "Developer Portal", "OAuth 2.0 / mTLS"],
+      title: "Data Platforms, Governance & AI Enablement",
+      categoryBadge: "DATA PLATFORMS & ENTERPRISE AI",
+      overview: "EXACT empowers enterprise decision-makers with unified master data governance, automated data pipelines, and operationalized AI solutions.",
+      image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=1200&q=80",
+      technologies: ["IBM Cloud Pak for Data", "IBM InfoSphere MDM", "watsonx.ai", "Java Spring AI", "SPSS Modeler", "Data Warehousing"],
       features: [
-        "REST, SOAP, and GraphQL API development & security routing",
-        "API gateway security, transformation, enrichment, and logging",
-        "API lifecycle management using API Manager and Cloud Manager",
-        "Developer Portal configuration, subscription, and app registration",
-        "On-premises, containerized, cloud, and managed deployment support"
+        "Master data governance framework definition and unified data views",
+        "Automated data pipeline integration, quality checks, and warehousing",
+        "Generative AI operationalization using watsonx.ai and Spring AI",
+        "Predictive analytics, machine learning model training, and executive dashboards"
       ],
-      impact: "Accelerate partner integration and protect digital assets with zero-trust API gateway security."
+      impact: "Transform historical enterprise data into governed, real-time insights and enterprise-ready generative AI."
     },
     "3": {
-      title: "Java Spring Application Services",
-      categoryBadge: "APPLICATION DEVELOPMENT",
-      overview: "EXACT develops and modernizes enterprise applications and integration services using Java and the Spring ecosystem.",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
-      technologies: ["Spring Core", "Spring Boot", "Spring Security", "Spring Data JPA", "RESTful APIs", "Microservices Architecture"],
+      title: "Cloud Infrastructure & Hybrid Modernization",
+      categoryBadge: "CLOUD & HYBRID MODERNIZATION",
+      overview: "EXACT guides enterprise workload migration, container orchestration, application server hardening, and multi-cloud infrastructure operations.",
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+      technologies: ["Red Hat OpenShift", "IBM WebSphere", "IaaS / PaaS / SaaS", "Workload Migration", "Dynatrace APM", "Cloud Security"],
       features: [
-        "Spring Core architecture and high-performance design",
-        "Spring Boot microservices applications and REST APIs",
-        "Spring Security implementation and OAuth2 protection",
-        "Spring Data JPA, database integration, and performance tuning",
-        "Integration with enterprise platforms, APIs, databases, and messaging"
+        "Cloud readiness, hybrid architecture risk assessment, and roadmap definition",
+        "Application server installation, LDAP integration, and HA clustering",
+        "Zero-downtime workload migration to Red Hat OpenShift and multi-cloud",
+        "Performance tuning, bottleneck diagnostics, and automated cloud monitoring"
       ],
-      impact: "Deliver scalable, cloud-ready Java microservices with built-in security and high throughput."
+      impact: "Achieve smooth cloud adoption with 99.99% availability and optimized infrastructure costs."
     },
     "4": {
-      title: "Information Integration & Data Governance",
-      categoryBadge: "DATA & GOVERNANCE",
-      overview: "EXACT helps organizations establish consistent, governed, and reliable information across operational, transactional, and analytical environments.",
-      image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=1200&q=80",
-      technologies: ["IBM InfoSphere MDM", "Master Data Management", "Data Stewardship", "Data Governance", "Consolidation Tools"],
-      features: [
-        "Master data assessment and governance framework definition",
-        "Data integration, quality, ownership, and consistency rules",
-        "IBM InfoSphere Master Data Management implementation",
-        "Unified views of customers, products, suppliers, locations, and accounts"
-      ],
-      impact: "Establish a unified master data foundation that eliminates duplicate records and ensures compliance."
-    },
-    "5": {
       title: "Business Process Transformation & Automation",
       categoryBadge: "PROCESS & AUTOMATION",
-      overview: "EXACT improves and automates business processes to reduce manual effort, improve control, accelerate turnaround time, and increase visibility.",
+      overview: "EXACT optimizes and automates end-to-end business workflows to reduce manual effort, enforce compliance rules, and accelerate turnaround times.",
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
-      technologies: ["IBM BAW", "IBM ODM", "Robotic Process Automation", "Decision Modeling", "KPI Monitoring"],
+      technologies: ["IBM BAW", "IBM ODM", "Automation Anywhere RPA", "Decision Modeling", "Custom Enablement Labs"],
       features: [
-        "Process assessment, mapping, redesign, and optimization",
-        "IBM Business Automation Workflow (BAW) implementation",
-        "IBM Operational Decision Manager (ODM) business-rule governance",
-        "Workflow integration with core enterprise applications, APIs, and data",
-        "Robotic Process Automation (RPA) for repetitive, rule-based tasks"
+        "Process mapping, bottleneck redesign, and operational workflow optimization",
+        "IBM Business Automation Workflow (BAW) and ODM rule governance",
+        "Robotic Process Automation (RPA) for repetitive, rule-based execution",
+        "Hands-on technical enablement, operational handover, and admin training"
       ],
-      impact: "Reduce operational turnaround times by up to 70% while ensuring 100% process rule compliance."
-    },
-    "6": {
-      title: "Information Management, Data Platforms & AI",
-      categoryBadge: "AI & ENTERPRISE DATA",
-      overview: "EXACT helps organizations turn enterprise data into usable information and AI-enabled business value.",
-      image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=1200&q=80",
-      technologies: ["IBM Cloud Pak for Data", "watsonx.ai", "Java Spring AI", "Big Data Lakes", "Data Warehousing"],
-      features: [
-        "Enterprise data warehouse and data repository services",
-        "Data integration, preparation, and automated pipeline setup",
-        "IBM Cloud Pak for Data enablement and governance",
-        "AI and analytics use-case assessment and operationalization",
-        "IBM watsonx.ai and Java Spring AI solution integration"
-      ],
-      impact: "Empower enterprise decision-makers with real-time analytics and enterprise-ready generative AI."
-    },
-    "7": {
-      title: "Predictive & Advanced Analytics",
-      categoryBadge: "ADVANCED ANALYTICS",
-      overview: "EXACT uses statistical analysis, machine learning, and advanced analytics to support evidence-based decisions.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-      technologies: ["IBM SPSS Modeler", "Machine Learning", "Statistical Modeling", "Executive Dashboards", "Prescriptive AI"],
-      features: [
-        "Predictive analytics use-case identification and scoping",
-        "IBM SPSS Modeler services and machine learning algorithms",
-        "Statistical, machine learning, and AI model training",
-        "Model deployment into live business operations and workflows",
-        "Diagnostic, predictive, and prescriptive management dashboards"
-      ],
-      impact: "Transform historical enterprise data into accurate forecasts and proactive risk alerts."
-    },
-    "8": {
-      title: "Enterprise Application Infrastructure",
-      categoryBadge: "INFRASTRUCTURE & MIDDLEWARE",
-      overview: "EXACT provides infrastructure and middleware services for secure, stable, and high-performing enterprise application environments.",
-      image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80",
-      technologies: ["IBM WebSphere", "LDAP", "Enterprise Architecture", "High Availability Clustering", "Performance Diagnostics"],
-      features: [
-        "Enterprise and solution architecture design",
-        "Application server and middleware installation and hardening",
-        "Database, LDAP, security, clustering, and HA configuration",
-        "Performance tuning, diagnostics, and bottleneck troubleshooting",
-        "Migration, upgrades, patching, and controlled production go-live"
-      ],
-      impact: "Ensure 99.99% infrastructure availability for mission-critical application workloads."
-    },
-    "9": {
-      title: "Cloud & Hybrid Infrastructure Services",
-      categoryBadge: "CLOUD & HYBRID",
-      overview: "EXACT supports customers from cloud readiness assessment through migration, deployment, optimization, and operations.",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
-      technologies: ["Hybrid Architecture", "Red Hat OpenShift", "IaaS / PaaS / SaaS", "Workload Migration", "Cloud Security"],
-      features: [
-        "Cloud readiness and workload risk assessment",
-        "On-premises, cloud, and hybrid architecture design",
-        "IaaS, PaaS, and SaaS implementation support",
-        "Application and workload migration to cloud environments",
-        "Security, connectivity, integration, and post-migration optimization"
-      ],
-      impact: "Achieve smooth cloud adoption with zero workload interruption and optimized resource usage."
-    },
-    "10": {
-      title: "Professional Training & Knowledge Transfer",
-      categoryBadge: "PROFESSIONAL ENABLEMENT",
-      overview: "EXACT provides practical technical training aligned with customer platforms, project requirements, and operational responsibilities.",
-      image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80",
-      technologies: ["Instructor-Led Training", "Hands-on Labs", "Admin & Dev Enablement", "Handover Documentation"],
-      features: [
-        "Instructor-led training and hands-on technical labs",
-        "Administrator, developer, architect, and operations enablement",
-        "Customized workshops tailored to customer stack",
-        "Operational handover and comprehensive documentation",
-        "Knowledge transfer for integration, middleware, data, AI, and cloud"
-      ],
-      impact: "Ensure your internal engineering team is fully equipped to maintain and extend your solution."
+      impact: "Reduce operational turnaround times by up to 70% while ensuring 100% compliance and team enablement."
     }
   };
 

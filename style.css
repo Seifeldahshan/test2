@@ -1,16 +1,28 @@
 /* Cosmos — Design Tokens & Core Styles */
 :root {
-  /* Colors */
-  --color-linen-canvas: #f7f5f3;
-  --color-ink-black: #0d0d0d;
-  --color-paper-white: #ffffff;
-  --color-stone: #6e6a69;
-  --color-pebble: #9a9796;
-  --color-border-subtle: rgba(13, 13, 13, 0.12);
+  /* Logo Palette Derived Colors */
+  --brand-navy: #183048;
+  --brand-navy-dark: #0b1724;
+  --brand-navy-light: #244667;
+  --brand-amber: #e69a2a;
+  --brand-amber-hover: #d5891b;
+  --brand-amber-light: rgba(230, 154, 42, 0.15);
+  --brand-teal: #487e6d;
+  --brand-teal-light: rgba(72, 126, 109, 0.15);
 
-  /* Surfaces */
+  /* Light Theme Surfaces & Colors */
+  --color-linen-canvas: #f2f5f8;
+  --color-ink-black: #102131;
+  --color-paper-white: #ffffff;
+  --color-stone: #4e6378;
+  --color-pebble: #8ba0b5;
+  --color-border-subtle: rgba(24, 48, 72, 0.12);
+
+  /* Component Tokens */
   --surface-canvas: var(--color-linen-canvas);
   --surface-card: var(--color-paper-white);
+  --color-accent-primary: var(--brand-amber);
+  --color-accent-secondary: var(--brand-teal);
 
   /* Typography — Single custom serif face (Fraunces used as optical serif) */
   --font-cosmosoracle: 'Fraunces', 'GT Super', 'Georgia', serif;
@@ -75,12 +87,15 @@
 
 /* Dark Theme Overrides */
 [data-theme="dark"] {
-  --color-linen-canvas: #121212;
-  --color-ink-black: #f0f0f0;
-  --color-paper-white: #1e1e1e;
-  --color-stone: #a0a0a0;
-  --color-pebble: #666666;
-  --color-border-subtle: rgba(240, 240, 240, 0.15);
+  --color-linen-canvas: #0b1724;
+  --color-ink-black: #f0f5fa;
+  --color-paper-white: #122334;
+  --color-stone: #8fa5bc;
+  --color-pebble: #4a627a;
+  --color-border-subtle: rgba(230, 154, 42, 0.18);
+
+  --color-accent-primary: var(--brand-amber);
+  --color-accent-secondary: var(--brand-teal);
 }
 
 /* Base Reset & Typography */
@@ -111,12 +126,19 @@ body.is-loading {
   height: 100vh;
 }
 
-/* Preloader Overlay (Phase 1 & Phase 2) */
 .preloader {
   position: fixed;
   inset: 0;
   z-index: 99999;
   pointer-events: auto;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.preloader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none !important;
+  display: none !important;
 }
 
 .preloader-panel {
@@ -125,15 +147,17 @@ body.is-loading {
   width: 100%;
   height: 100%;
   will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .preloader-panel-2 {
-  background-color: #1a1a1c;
+  background-color: var(--brand-navy-dark);
   z-index: 1;
 }
 
 .preloader-panel-1 {
-  background-color: #0d0d0d;
+  background-color: var(--brand-navy);
   color: #ffffff;
   z-index: 2;
   display: flex;
@@ -154,20 +178,36 @@ body.is-loading {
 .preloader-brand {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
   opacity: 0;
   transform: scale(0.96);
   color: #ffffff;
 }
 
+/* Transparent Brand Logo System */
+.brand-logo-img {
+  display: block;
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
 
+.nav-logo-img {
+  height: 64px;
+  width: auto;
+  max-height: 70px;
+  filter: drop-shadow(0 3px 10px rgba(255, 255, 255, 0.25));
+}
 
+.preloader-logo-img {
+  height: clamp(140px, 20vw, 220px);
+  width: auto;
+  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.55));
+}
 
-.preloader-brand .brand-name {
-  font-family: var(--font-cosmosoracle);
-  font-size: clamp(36px, 6vw, 64px);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: -1px;
+.footer-logo-img {
+  height: 56px;
+  width: auto;
 }
 
 .preloader-counter-wrap {
@@ -225,11 +265,15 @@ body.is-loading {
   font-family: var(--font-cosmosoracle);
   font-size: 15px;
   font-weight: var(--font-weight-medium);
-  letter-spacing: 0em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--color-ink-black);
+  color: var(--brand-teal);
   display: inline-block;
   margin-bottom: var(--spacing-16);
+}
+
+[data-theme="dark"] .eyebrow-label {
+  color: var(--brand-amber);
 }
 
 .display-headline {
@@ -272,7 +316,7 @@ body.is-loading {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   text-decoration: none;
   border: none;
   outline: none;
@@ -282,14 +326,18 @@ body.is-loading {
   transform: scale(0.98);
 }
 
-/* Primary Filled Button */
+/* Primary Filled Button — Brand Amber Gold */
 .btn-primary {
-  background-color: var(--color-ink-black);
-  color: var(--color-paper-white);
+  background: linear-gradient(135deg, var(--brand-amber) 0%, #d8891c 100%);
+  color: #0b1724;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(230, 154, 42, 0.3);
 }
 
 .btn-primary:hover {
-  opacity: 0.9;
+  background: linear-gradient(135deg, #f0a332 0%, var(--brand-amber) 100%);
+  box-shadow: 0 6px 20px rgba(230, 154, 42, 0.45);
+  transform: translateY(-1px);
 }
 
 /* Secondary Outlined Button */
@@ -300,9 +348,16 @@ body.is-loading {
 }
 
 .btn-secondary:hover {
-  border-color: var(--color-ink-black);
+  border-color: var(--brand-navy);
+  color: var(--brand-navy);
 }
 
+[data-theme="dark"] .btn-secondary:hover {
+  border-color: var(--brand-amber);
+  color: var(--brand-amber);
+}
+
+/* Floating Pill Navigation Bar */
 /* Floating Pill Navigation Bar */
 .nav-pill-container {
   position: fixed;
@@ -316,18 +371,21 @@ body.is-loading {
   pointer-events: none;
 }
 
+/* Light Mode: Navigation Bar is Black / Deep Midnight Navy */
 .nav-pill {
   pointer-events: auto;
-  background-color: var(--color-paper-white);
-  border: 1px solid var(--color-border-subtle);
+  background-color: #0b1724;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-pill);
-  padding: 8px 16px;
+  padding: 8px 24px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--spacing-24);
   max-width: var(--page-max-width);
   width: 100%;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-brand {
@@ -335,7 +393,7 @@ body.is-loading {
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: var(--color-ink-black);
+  color: #ffffff;
 }
 
 .brand-name {
@@ -347,12 +405,12 @@ body.is-loading {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
 }
 
 .nav-link {
   font-size: 15px;
-  color: var(--color-stone);
+  color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
   font-weight: var(--font-weight-regular);
   transition: color 0.2s ease;
@@ -360,42 +418,22 @@ body.is-loading {
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--color-ink-black);
-}
-
-.nav-search {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  background: transparent;
-}
-
-.search-icon {
-  color: var(--color-stone);
-}
-
-.nav-search input {
-  width: 100%;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-family: var(--font-cosmosoracle);
-  font-size: 16px;
-  font-weight: var(--font-weight-regular);
-  color: var(--color-ink-black);
-}
-
-.nav-search input::placeholder {
-  color: var(--color-stone);
+  color: var(--brand-amber);
+  font-weight: 500;
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  margin-left: auto;
 }
+
+
+
+
+
+
 
 .icon-button {
   width: 32px;
@@ -403,16 +441,52 @@ body.is-loading {
   border-radius: 9999px;
   border: none;
   background: transparent;
-  color: var(--color-ink-black);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .icon-button:hover {
-  background-color: var(--color-linen-canvas);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Dark Mode: Opposite — Navigation Bar is Crisp White */
+[data-theme="dark"] .nav-pill {
+  background-color: #ffffff;
+  border-color: rgba(16, 33, 49, 0.12);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .nav-brand {
+  color: #102131;
+}
+
+[data-theme="dark"] .nav-logo-img {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+}
+
+[data-theme="dark"] .nav-link {
+  color: #4e6378;
+}
+
+[data-theme="dark"] .nav-link:hover,
+[data-theme="dark"] .nav-link.active {
+  color: var(--brand-navy);
+  font-weight: 600;
+}
+
+
+
+
+[data-theme="dark"] .icon-button {
+  color: #102131;
+}
+
+[data-theme="dark"] .icon-button:hover {
+  background-color: rgba(16, 33, 49, 0.08);
 }
 
 .nav-login-btn,
@@ -762,9 +836,18 @@ body.is-loading {
 
 .tag-pill:hover,
 .tag-pill.active {
-  background-color: var(--color-ink-black);
-  color: var(--color-paper-white);
-  border-color: var(--color-ink-black);
+  background-color: var(--brand-navy);
+  color: var(--brand-amber);
+  border-color: var(--brand-navy);
+  box-shadow: 0 4px 12px rgba(24, 48, 72, 0.25);
+}
+
+[data-theme="dark"] .tag-pill:hover,
+[data-theme="dark"] .tag-pill.active {
+  background-color: var(--brand-amber);
+  color: #0b1724;
+  border-color: var(--brand-amber);
+  box-shadow: 0 4px 12px rgba(230, 154, 42, 0.3);
 }
 
 /* Feature Grid (Wide-Range 2-Column Grid) */
@@ -1145,11 +1228,12 @@ body.is-loading {
 .exact-badge {
   font-family: var(--font-cosmosoracle);
   font-size: 12px;
-  font-weight: var(--font-weight-medium);
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  background-color: var(--color-ink-black);
-  color: var(--color-paper-white);
+  background-color: var(--brand-navy);
+  color: var(--brand-amber);
+  border: 1px solid rgba(230, 154, 42, 0.3);
   padding: 4px 12px;
   border-radius: var(--radius-pill);
 }
@@ -1385,8 +1469,7 @@ body.is-loading {
     padding: 90px var(--spacing-16) var(--spacing-48);
   }
 
-  .nav-links,
-  .nav-search {
+  .nav-links {
     display: none;
   }
 
