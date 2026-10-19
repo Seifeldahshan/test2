@@ -8,11 +8,11 @@
   <meta name="description"
     content="Tech delivers enterprise-grade cloud infrastructure, AI integration, and cybersecurity solutions that scale with your business.">
 
-  <!-- Source Sans 3 — professional sans for the whole site -->
+  <!-- Google Fonts: Plus Jakarta Sans, Fraunces, Inter, Source Serif 4 & Source Sans 3 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Inter:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
@@ -24,37 +24,41 @@
   <div class="preloader-panel preloader-panel-1">
     <div class="preloader-content">
       <div class="preloader-brand">
-        <span class="logo-crop preloader-logo">
-          <img src="assets/exact-logo-bgremove.png" alt="EXACT Digital Solutions">
-        </span>
+        <img src="assets/exact_logo-removebg-preview.png" alt="EXACT Digital Solutions"
+          class="brand-logo-img preloader-logo-img">
       </div>
     </div>
   </div>
 </div>
 
-<!-- Floating Pill Navigation Bar -->
-<nav class="nav-pill-container" id="main-nav">
-  <div class="nav-pill">
-    <!-- 8-dot cluster logo -->
-    <a href="#" class="nav-brand" aria-label="EXACT Home">
-      <span class="logo-crop nav-logo">
-        <img src="assets/exact-logo-bgremove.png" alt="EXACT Digital Solutions">
-      </span>
+<!-- Full-Bleed Site Header & Hero Section -->
+<header class="site-header" id="hero">
+  <!-- Background Image with Gradient Overlay -->
+  <div class="header-bg-media">
+    <video class="header-bg-img" autoplay muted loop playsinline preload="auto" poster="assets/header1.jpg">
+      <source src="assets/hero-video2.mp4" type="video/mp4">
+    </video>
+    <div class="header-overlay"></div>
+  </div>
+
+  <!-- Transparent Top Navigation Bar -->
+  <nav class="header-nav" id="main-nav">
+    <a href="#" class="header-brand" aria-label="EXACT Home">
+      <img src="assets/exact_logo-removebg-preview.png" alt="EXACT Digital Solutions"
+        class="brand-logo-img nav-logo-img">
     </a>
 
-    <!-- Navigation links, centered in the pill -->
-    <div class="nav-links">
-      <span class="nav-indicator" aria-hidden="true"></span>
-      <a href="#solutions" class="nav-link">Our Services</a>
-      <a href="#partners" class="nav-link">Partners</a>
-      <a href="#about" class="nav-link">About</a>
-      <a href="#references" class="nav-link">References</a>
+    <!-- Center Navigation Links -->
+    <div class="header-nav-links">
+      <a href="#about" class="header-nav-link">About</a>
+      <a href="#services-carousel-section" class="header-nav-link">Our Services</a>
+      <a href="#about" class="header-nav-link">Contact</a>
     </div>
 
-    <!-- Action Cluster -->
-    <div class="nav-actions">
+    <!-- Right Actions: Theme Toggle & Request Demo Button -->
+    <div class="header-nav-actions">
       <!-- Theme Toggle -->
-      <button class="icon-button theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      <button class="icon-button header-theme-toggle" id="theme-toggle" aria-label="Toggle theme">
         <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
           stroke-width="2">
           <circle cx="12" cy="12" r="5"></circle>
@@ -73,32 +77,149 @@
         </svg>
       </button>
 
-      <button class="btn btn-primary nav-signup-btn" id="btn-request-demo">Request a Demo</button>
+      <!-- Request Demo Button (replacing Join Now and Login) -->
+      <button class="btn-amber-rectangular" id="btn-request-demo">Request Demo</button>
+    </div>
+  </nav>
+
+  <!-- Centered Hero Text & CTA matching reference design -->
+  <div class="header-hero-content">
+    <h1 class="header-hero-headline" aria-label="Make Complexity Work. EXACTly">
+      <span class="headline-line-wrap headline-line-1-wrap">
+        <span class="headline-line-1">Make Complexity Work.</span>
+      </span>
+      <span class="headline-line-wrap headline-line-2-wrap">
+        <span class="headline-line-2">
+          <span class="accent-word">
+            <span class="accent-word-text"><span class="brand-highlight">EXACT</span><span class="suffix-ly">ly</span></span>
+            <svg class="headline-swoosh-accent" viewBox="0 0 320 28" fill="none" xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none" aria-hidden="true">
+              <path d="M4 18C70 6 200 4 316 16" stroke="#f6c358" stroke-width="6.5" stroke-linecap="round" />
+            </svg>
+          </span>
+        </span>
+      </span>
+    </h1>
+
+    <div class="header-hero-cta">
+      <button class="btn-hero-cta-amber" id="btn-hero-request-demo">Request Demo</button>
     </div>
   </div>
-</nav>
+
+  <!-- Services slide over the hero from the right -->
+  <div class="hero-services is-scroll-driven" id="services-carousel-section" aria-label="Our Core Solutions">
+    <div class="carousel-viewport" id="solutions-carousel-track">
+
+      <article class="service-carousel-card feature-card" data-category="integration" data-solution="1">
+        <div class="card-media-wrapper">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=80"
+            alt="Enterprise Integration & API Architecture" class="card-bg-img" loading="eager">
+        </div>
+        <div class="card-panel">
+          <h3 class="card-serif-title">Integration</h3>
+          <span class="card-count">1/6</span>
+          <p class="card-panel-sub">Enterprise Integration &amp; API Architecture</p>
+          <span class="card-details-link">Details</span>
+        </div>
+      </article>
+
+      <article class="service-carousel-card feature-card" data-category="data-ai" data-solution="2">
+        <div class="card-media-wrapper">
+          <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=1400&q=80"
+            alt="Data Platforms, Governance & AI Enablement" class="card-bg-img" loading="lazy">
+        </div>
+        <div class="card-panel">
+          <h3 class="card-serif-title">Data &amp; AI</h3>
+          <span class="card-count">2/6</span>
+          <p class="card-panel-sub">Governance &amp; AI Enablement</p>
+          <span class="card-details-link">Details</span>
+        </div>
+      </article>
+
+      <article class="service-carousel-card feature-card" data-category="cloud" data-solution="3">
+        <div class="card-media-wrapper">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80"
+            alt="Cloud Infrastructure & Hybrid Modernization" class="card-bg-img" loading="lazy">
+        </div>
+        <div class="card-panel">
+          <h3 class="card-serif-title">Cloud</h3>
+          <span class="card-count">3/6</span>
+          <p class="card-panel-sub">Hybrid Modernization</p>
+          <span class="card-details-link">Details</span>
+        </div>
+      </article>
+
+      <article class="service-carousel-card feature-card" data-category="automation" data-solution="4">
+        <div class="card-media-wrapper">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80"
+            alt="Business Process Transformation & Automation" class="card-bg-img" loading="lazy">
+        </div>
+        <div class="card-panel">
+          <h3 class="card-serif-title">Automation</h3>
+          <span class="card-count">4/6</span>
+          <p class="card-panel-sub">Process Transformation</p>
+          <span class="card-details-link">Details</span>
+        </div>
+      </article>
+
+      <article class="service-carousel-card feature-card" data-category="security" data-solution="5">
+        <div class="card-media-wrapper">
+          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80"
+            alt="Cybersecurity and Risk Control" class="card-bg-img" loading="lazy">
+        </div>
+        <div class="card-panel">
+          <h3 class="card-serif-title">Security</h3>
+          <span class="card-count">5/6</span>
+          <p class="card-panel-sub">Cybersecurity &amp; Risk Control</p>
+          <span class="card-details-link">Details</span>
+        </div>
+      </article>
+
+      <article class="service-carousel-card feature-card" data-category="observability" data-solution="6">
+        <div class="card-media-wrapper">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80"
+            alt="Observability and Operations" class="card-bg-img" loading="lazy">
+        </div>
+        <div class="card-panel">
+          <h3 class="card-serif-title">Observability</h3>
+          <span class="card-count">6/6</span>
+          <p class="card-panel-sub">Performance &amp; Operations</p>
+          <span class="card-details-link">Details</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</header>
 
 <main class="page-container">
 
-  <!-- Hero Section -->
-  <section class="hero-section" id="hero">
-
-    <!-- Hero Left Content -->
-    <div class="hero-content">
-      <span class="hero-rule" aria-hidden="true"></span>
-      <h1 class="display-headline hero-headline-masked">
-        <span class="mask-line"><span class="mask-inner">No guesswork.</span></span>
-        <span class="mask-line"><span class="mask-inner">Just Exact.</span></span>
-      </h1>
-
-      <div class="button-row">
-        <button class="btn btn-primary" id="btn-hero-demo" type="button">Request a Demo</button>
+  <!-- Trusted-by tape: sits in flow between the services and the image -->
+  <section class="trusted-band" aria-label="Trusted by">
+    <p class="trusted-label">Trusted by</p>
+    <div class="trusted-tape">
+      <div class="trusted-track">
+        <div class="trusted-set">
+          <span class="trusted-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M11 22V10l10 12V10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg><span>Northline</span></span>
+          <span class="trusted-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l12 6.5v13L16 29 4 22.5v-13L16 3z" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="16" cy="16" r="3.2" fill="currentColor"/></svg><span>Halden</span></span>
+          <span class="trusted-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 22c6-12 18-12 24 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M8 18c4-7 12-7 16 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Meridian</span></span>
+          <span class="trusted-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="5" width="22" height="22" rx="3" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M11 21l5-10 5 10M13.2 17h5.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>Cobalt</span></span>
+          <span class="trusted-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="5" fill="currentColor"/><path d="M16 3v4M16 25v4M3 16h4M25 16h4M6.8 6.8l2.8 2.8M22.4 22.4l2.8 2.8M25.2 6.8l-2.8 2.8M9.6 22.4l-2.8 2.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Lumenark</span></span>
+          <span class="trusted-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 24h20M8 24V14l8-8 8 8v10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M14 24v-6h4v6" fill="none" stroke="currentColor" stroke-width="2.2"/></svg><span>Forgewell</span></span>
+          <span class="trusted-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="16" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="20" cy="16" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/></svg><span>Kinship</span></span>
+          <span class="trusted-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4l11 20H5L16 4z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M16 14v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Atlas Row</span></span>
+        </div>
+        <div class="trusted-set" aria-hidden="true">
+          <span class="trusted-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M11 22V10l10 12V10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg><span>Northline</span></span>
+          <span class="trusted-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l12 6.5v13L16 29 4 22.5v-13L16 3z" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="16" cy="16" r="3.2" fill="currentColor"/></svg><span>Halden</span></span>
+          <span class="trusted-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 22c6-12 18-12 24 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M8 18c4-7 12-7 16 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Meridian</span></span>
+          <span class="trusted-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="5" width="22" height="22" rx="3" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M11 21l5-10 5 10M13.2 17h5.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>Cobalt</span></span>
+          <span class="trusted-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="5" fill="currentColor"/><path d="M16 3v4M16 25v4M3 16h4M25 16h4M6.8 6.8l2.8 2.8M22.4 22.4l2.8 2.8M25.2 6.8l-2.8 2.8M9.6 22.4l-2.8 2.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Lumenark</span></span>
+          <span class="trusted-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 24h20M8 24V14l8-8 8 8v10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M14 24v-6h4v6" fill="none" stroke="currentColor" stroke-width="2.2"/></svg><span>Forgewell</span></span>
+          <span class="trusted-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="16" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="20" cy="16" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/></svg><span>Kinship</span></span>
+          <span class="trusted-logo"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4l11 20H5L16 4z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M16 14v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Atlas Row</span></span>
+        </div>
       </div>
-    </div>
-
-    <!-- Hero Right Image -->
-    <div class="hero-image">
-      <img src="assets/hero-section%20side%20photo.jpg" alt="EXACT Digital Consulting" loading="eager">
     </div>
   </section>
 
@@ -121,175 +242,69 @@
     </div>
   </section>
 
-  
-
-
-  <!-- Our Services -->
-  <section class="services-section" id="solutions">
-    <div class="services-head">
-      <div class="services-intro">
-        <h2 class="services-title">Our Services</h2>
-        <p class="services-lead">Six practices, carried as one delivery — from the first architecture through the support that follows go-live.</p>
+  <section class="why-exact" id="about">
+    <div class="why-exact-top">
+      <div class="why-exact-copy">
+        <span class="why-kicker">Why Exact</span>
+        <h2 class="why-title">One partner from the first sketch to the handover.</h2>
       </div>
+      <p class="why-lead">IBM, Red Hat, Automation Anywhere, ManageEngine, and Dynatrace — paired with consultants who stay on the work from assessment through operations.</p>
     </div>
 
-    <div class="service-stage">
-      <button class="service-arrow service-arrow--prev" id="services-prev" type="button" aria-label="Previous services">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6 6 6"></path></svg>
-      </button>
-      <button class="service-arrow service-arrow--next" id="services-next" type="button" aria-label="Next services">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"></path></svg>
-      </button>
-
-    <div class="feature-grid service-index" id="feature-grid">
-      <article class="feature-card" data-category="integration" data-solution="1">
-        <div class="service-visual">
-          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80"
-            alt="" loading="lazy">
-        </div>
-        <div class="service-body">
-          <h3 class="card-label">Enterprise Integration &amp; API Architecture</h3>
-          <p class="service-blurb">APIs, messaging, and the connections between the systems that already run the business.</p>
-          <button class="card-inspect-btn" type="button">View service</button>
-        </div>
-      </article>
-
-      <article class="feature-card" data-category="data-ai" data-solution="2">
-        <div class="service-visual">
-          <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=900&q=80"
-            alt="" loading="lazy">
-        </div>
-        <div class="service-body">
-          <h3 class="card-label">Data Platforms, Governance &amp; AI Enablement</h3>
-          <p class="service-blurb">Governed data and AI shaped so the insight can be trusted, operated, and put to work.</p>
-          <button class="card-inspect-btn" type="button">View service</button>
-        </div>
-      </article>
-
-      <article class="feature-card" data-category="cloud" data-solution="3">
-        <div class="service-visual">
-          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80"
-            alt="" loading="lazy">
-        </div>
-        <div class="service-body">
-          <h3 class="card-label">Cloud Infrastructure &amp; Hybrid Modernization</h3>
-          <p class="service-blurb">Hybrid cloud and infrastructure modernization that stays secure, operable, and ready to run.</p>
-          <button class="card-inspect-btn" type="button">View service</button>
-        </div>
-      </article>
-
-      <article class="feature-card" data-category="automation" data-solution="4">
-        <div class="service-visual">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
-            alt="" loading="lazy">
-        </div>
-        <div class="service-body">
-          <h3 class="card-label">Process Transformation &amp; Automation</h3>
-          <p class="service-blurb">Workflows redesigned and automated, from the first map through handover and enablement.</p>
-          <button class="card-inspect-btn" type="button">View service</button>
-        </div>
-      </article>
-
-      <article class="feature-card" data-category="security" data-solution="5">
-        <div class="service-visual">
-          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80"
-            alt="" loading="lazy">
-        </div>
-        <div class="service-body">
-          <h3 class="card-label">Security, Identity &amp; Observability</h3>
-          <p class="service-blurb">Identity, access, and monitoring so the platforms in production stay visible and controlled.</p>
-          <button class="card-inspect-btn" type="button">View service</button>
-        </div>
-      </article>
-
-      <article class="feature-card" data-category="support" data-solution="6">
-        <div class="service-visual">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80"
-            alt="" loading="lazy">
-        </div>
-        <div class="service-body">
-          <h3 class="card-label">Managed Support &amp; Enablement</h3>
-          <p class="service-blurb">Ongoing care, maintenance, and the training that lets your team run what was built.</p>
-          <button class="card-inspect-btn" type="button">View service</button>
-        </div>
-      </article>
-    </div>
-    </div>
-  </section>
-
-    <!-- Technology Partners -->
-    <section class="partners-section" id="partners">
-      <div class="partners-intro">
-        <span class="eyebrow-label">Partners</span>
-        <h2 class="section-heading">Platforms we design, deliver, and support.</h2>
-        <p class="section-sub">EXACT works on enterprise technology our clients already run — pairing platform depth with a structured delivery lifecycle.</p>
-      </div>
-  
-      <div class="partners-grid">
-        <article class="partner-card partner-card--ibm">
-          <div class="partner-logo-plate">
-            <img src="assets/ibm.jpg" alt="IBM">
+    <div class="why-exact-stage">
+      <figure class="why-photo">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80"
+          alt="Glass office towers in the early evening" loading="lazy">
+        <figcaption class="why-photo-stats">
+          <div class="why-stat">
+            <span class="why-stat-num">5-Phase</span>
+            <span class="why-stat-label">Delivery lifecycle</span>
           </div>
-          <div class="partner-copy">
-            <span class="partner-role">Hybrid cloud, integration &amp; AI</span>
-            <h3 class="partner-name">IBM</h3>
-            <p>IBM underpins hybrid cloud, enterprise integration, and governed AI for institutions that need resilience as much as speed. EXACT architects and implements on that stack — from APIs and messaging to data platforms and watsonx — so modernization stays secure, operable, and ready to run.</p>
-            <ul class="partner-points">
-              <li>Hybrid cloud architecture and infrastructure modernization</li>
-              <li>Integration across APIs, messaging, and secure connectivity</li>
-              <li>Data platforms and watsonx for governed enterprise AI</li>
-            </ul>
+          <div class="why-stat">
+            <span class="why-stat-num">100%</span>
+            <span class="why-stat-label">Structured handover</span>
+          </div>
+          <div class="why-stat">
+            <span class="why-stat-num">Multi-cloud</span>
+            <span class="why-stat-label">Enterprise estates</span>
+          </div>
+        </figcaption>
+      </figure>
+
+      <div class="why-points">
+        <article class="why-point">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=700&q=80"
+            alt="Consultants working through a plan together" loading="lazy">
+          <div class="why-point-body">
+            <span class="why-point-index">01</span>
+            <h3>One accountable team</h3>
+            <p>Consulting, architecture, and delivery stay with the same people, so decisions do not get lost between vendors.</p>
           </div>
         </article>
-  
-        <article class="partner-card partner-card--uipath">
-          <div class="partner-logo-plate">
-            <img src="assets/uipath.jpg" alt="UiPath">
+        <article class="why-point">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=700&q=80"
+            alt="Architecture workshop around a shared table" loading="lazy">
+          <div class="why-point-body">
+            <span class="why-point-index">02</span>
+            <h3>Platforms that fit</h3>
+            <p>The stack is chosen for the systems you already run, not swapped in for a diagram that only works on a slide.</p>
           </div>
-          <div class="partner-copy">
-            <span class="partner-role">Intelligent automation</span>
-            <h3 class="partner-name">UiPath</h3>
-            <p>UiPath brings robotic process automation, process intelligence, and document understanding into one enterprise platform. EXACT uses it to take repetitive work out of operations — with orchestration, controls, and a clear path from the first process to a production program.</p>
-            <ul class="partner-points">
-              <li>Attended and unattended automation across core operations</li>
-              <li>Process intelligence to find, measure, and prioritize work</li>
-              <li>Document understanding for high-volume, rules-heavy workflows</li>
-            </ul>
+        </article>
+        <article class="why-point why-point-dark">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=80"
+            alt="Close view of enterprise hardware in operation" loading="lazy">
+          <div class="why-point-body">
+            <span class="why-point-index">03</span>
+            <h3>A handover you can run</h3>
+            <p>Five phases end with runbooks, named owners, and a close your operations team can actually pick up.</p>
           </div>
         </article>
       </div>
-    </section>
+    </div>
 
-  <!-- About EXACT -->
-  <section class="about-section" id="about">
-    <div class="about-frame">
-      <div class="about-head">
-        <span class="eyebrow-label">About EXACT</span>
-        <span class="about-line" aria-hidden="true"></span>
-      </div>
-
-      <div class="about-layout">
-        <h2 class="about-title">Modernize with clarity.<br>Deliver with discipline.</h2>
-        <p class="about-lead">EXACT helps organizations modernize technology, improve operational efficiency, and accelerate digital transformation through consulting, architecture, integration, data, AI, cloud, and ongoing support.</p>
-      </div>
-
-      <ol class="about-threads">
-        <li>
-          <span class="about-num">01</span>
-          <h3>Consulting</h3>
-          <p>Architecture and direction shaped around the systems, constraints, and outcomes already in front of you.</p>
-        </li>
-        <li>
-          <span class="about-num">02</span>
-          <h3>Delivery</h3>
-          <p>Integration, data, AI, and cloud carried from design through a structured build and a clean handover.</p>
-        </li>
-        <li>
-          <span class="about-num">03</span>
-          <h3>Continuity</h3>
-          <p>Support that stays after go-live, so the platform keeps running with the same care it was built with.</p>
-        </li>
-      </ol>
+    <div class="why-actions">
+      <button class="btn btn-primary" id="btn-add-tile">Schedule a Consultation</button>
+      <button class="btn btn-secondary" id="btn-reset-collage">View Delivery Framework</button>
     </div>
   </section>
 
@@ -330,9 +345,8 @@
   <footer class="footer-section">
     <div class="footer-top">
       <div class="footer-brand">
-        <span class="logo-crop footer-logo">
-          <img src="assets/exact-logo-bgremove.png" alt="EXACT Digital Solutions">
-        </span>
+        <img src="assets/exact_logo-removebg-preview.png" alt="EXACT Digital Solutions"
+          class="brand-logo-img footer-logo-img">
       </div>
       <p class="footer-tagline">Modernizing enterprise architecture with speed and precision.</p>
     </div>
@@ -340,10 +354,9 @@
     <div class="footer-bottom">
       <span class="footer-copy">&copy; 2026 EXACT Digital Services. All rights reserved.</span>
       <div class="footer-links">
-        <a href="#solutions" class="footer-link">Our Services</a>
-        <a href="#about" class="footer-link">About</a>
-        <a href="#partners" class="footer-link">Partners</a>
-        <a href="#references" class="footer-link">References</a>
+        <a href="#services-carousel-section" class="footer-link">Solutions</a>
+        <a href="#about" class="footer-link">Methodology</a>
+        <a href="#" class="footer-link">Governance</a>
         <a href="#" class="footer-link">Contact</a>
       </div>
     </div>
@@ -351,71 +364,71 @@
 
 </main>
 
-<!-- Service detail folio -->
+<!-- Solution detail, opened from a service card -->
 <div class="exact-modal-overlay" id="exact-solution-modal" aria-hidden="true">
-  <div class="exact-modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="exact-modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-title" data-lenis-prevent>
     <button class="exact-modal-close" id="close-exact-modal" aria-label="Close detail modal">&times;</button>
 
-    <div class="exact-modal-layout" data-lenis-prevent>
-      <div class="exact-modal-media">
-        <img id="modal-hero-img" src="" alt="">
-        <div class="exact-media-gradient"></div>
-        <span class="exact-badge" id="modal-category-badge">INTEGRATION</span>
-      </div>
+    <div class="exact-modal-media">
+      <img id="modal-hero-img" src="" alt="EXACT Solution Visual">
+      <div class="exact-media-gradient"></div>
+      <span class="exact-badge" id="modal-category-badge">INTEGRATION</span>
+    </div>
 
-      <div class="exact-modal-body" data-lenis-prevent>
-        <p class="exact-modal-kicker">EXACT service</p>
-        <h2 class="exact-modal-title" id="modal-title">Enterprise Solution Title</h2>
-        <p class="exact-modal-overview" id="modal-overview">Full detailed overview of the EXACT solution offering.</p>
+    <div class="exact-modal-body">
+      <p class="exact-badge-sub">EXACT Digital Services Portfolio</p>
+      <h2 class="exact-modal-title" id="modal-title">Enterprise Solution Title</h2>
+      <p class="exact-modal-overview" id="modal-overview">Full detailed overview of the EXACT solution offering.</p>
 
-        <div class="exact-lifecycle-box">
-          <h4 class="exact-box-title">How it is delivered</h4>
+      <div class="exact-modal-grid">
+        <div class="exact-modal-main">
+          <div class="exact-tech-section">
+            <h4 class="exact-box-title">Platforms</h4>
+            <div class="exact-tech-tags" id="modal-tech-tags"></div>
+          </div>
+        </div>
+
+          <div class="exact-features-section">
+            <h4 class="exact-box-title">What we deliver</h4>
+            <ul class="exact-feature-list" id="modal-feature-list"></ul>
+          </div>
+        </div>
+
+        <aside class="exact-lifecycle-box">
+          <h4 class="exact-box-title">Delivery lifecycle</h4>
           <div class="exact-lifecycle-steps">
             <div class="lifecycle-step">
               <span class="step-num">01</span>
-              <div class="step-text"><strong>Assess</strong> Objectives, environment, and risk.</div>
+              <div class="step-text"><strong>Assess</strong> Objectives, environment, risks and expected return.</div>
             </div>
             <div class="lifecycle-step">
               <span class="step-num">02</span>
-              <div class="step-text"><strong>Design</strong> Architecture, security, and roadmap.</div>
+              <div class="step-text"><strong>Design</strong> Target architecture, security and roadmap.</div>
             </div>
             <div class="lifecycle-step">
               <span class="step-num">03</span>
-              <div class="step-text"><strong>Implement</strong> Configure, build, integrate, and test.</div>
+              <div class="step-text"><strong>Implement</strong> Configure, develop, integrate and test.</div>
             </div>
             <div class="lifecycle-step">
               <span class="step-num">04</span>
-              <div class="step-text"><strong>Modernize</strong> Cloud adoption and process change.</div>
+              <div class="step-text"><strong>Modernize</strong> Cloud adoption and process optimization.</div>
             </div>
             <div class="lifecycle-step">
               <span class="step-num">05</span>
-              <div class="step-text"><strong>Operate</strong> Care, patches, and handover.</div>
+              <div class="step-text"><strong>Operate</strong> Patches, maintenance and knowledge transfer.</div>
             </div>
           </div>
-        </div>
+        </aside>
+      </div>
 
-        <div class="exact-modal-split">
-          <div class="exact-features-section">
-            <h4 class="exact-box-title">What this covers</h4>
-            <ul class="exact-feature-list" id="modal-feature-list"></ul>
-          </div>
+      <div class="exact-impact-box">
+        <span class="impact-label">Outcome</span>
+        <p class="impact-text" id="modal-impact-text">Quantifiable outcome description.</p>
+      </div>
 
-          <div class="exact-modal-aside">
-            <div class="exact-tech-section">
-              <h4 class="exact-box-title">Platforms</h4>
-              <div class="exact-tech-tags" id="modal-tech-tags"></div>
-            </div>
-            <div class="exact-impact-box">
-              <span class="impact-label">Outcome</span>
-              <p class="impact-text" id="modal-impact-text">Quantifiable outcome description.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="exact-modal-actions">
-          <button class="btn btn-primary exact-modal-btn" id="btn-modal-consult" type="button">Request a brief</button>
-          <button class="exact-modal-dismiss" id="btn-modal-close-action" type="button">Close</button>
-        </div>
+      <div class="exact-modal-actions">
+        <button class="btn btn-primary exact-modal-btn" id="btn-modal-consult">Request Solution Brief</button>
+        <button class="btn btn-secondary exact-modal-btn" id="btn-modal-close-action">Close</button>
       </div>
     </div>
   </div>

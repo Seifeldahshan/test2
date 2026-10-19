@@ -1,4 +1,8 @@
 // Cosmos Interactive Engine
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.getElementById('services-carousel-section')?.classList.remove('is-scroll-driven');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // Prevent scroll during preloader loading phase
@@ -11,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 0. Smooth Scroll Layer (Lenis) with inertia lerp
   let lenis;
+  let fitServicesStage = null;
   if (typeof Lenis !== 'undefined') {
     lenis = new Lenis({
       duration: 1.2,
@@ -42,21 +47,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set initial hidden states to prevent FOUC / flash before sequence starts
     gsap.set('#main-nav', { y: -20, opacity: 0 });
-    gsap.set('.hero-rule', { scaleX: 0, opacity: 0, transformOrigin: 'left center' });
-    gsap.set('.hero-headline-masked .mask-inner', { yPercent: 100 });
-    gsap.set('.hero-content .button-row', { scale: 0.95, opacity: 0 });
-    gsap.set('.hero-image', { scale: 1.05, opacity: 0 });
+    gsap.set('.headline-line-1', { y: 25, opacity: 0 });
+    gsap.set('.headline-line-2', { yPercent: 110, opacity: 0, scale: 0.96 });
+    gsap.set('.headline-swoosh-accent', { scaleX: 0, transformOrigin: '50% 100%', opacity: 0 });
+    gsap.set('.header-hero-cta', { y: 20, opacity: 0 });
 
     const masterTL = gsap.timeline({
       onComplete: () => {
+        document.body.classList.remove('is-loading');
+        if (lenis) lenis.start();
+        if (typeof fitServicesStage === 'function') fitServicesStage();
+        if (typeof ScrollTrigger !== 'undefined') {
+          ScrollTrigger.refresh();
+        }
         if (preloaderEl) {
           preloaderEl.classList.add('is-hidden');
           preloaderEl.style.display = 'none';
-        }
-        document.body.classList.remove('is-loading');
-        if (lenis) lenis.start();
-        if (typeof ScrollTrigger !== 'undefined') {
-          ScrollTrigger.refresh();
         }
       }
     });
@@ -99,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, '-=0.55');
 
-    // PHASE 3 — HERO REVEAL CASCADE
+    // PHASE 3 — HEADER & HERO REVEAL
     masterTL.to('#main-nav', {
       y: 0,
       opacity: 1,
@@ -107,48 +113,45 @@ document.addEventListener('DOMContentLoaded', () => {
       ease: 'power3.out'
     }, '-=0.4');
 
-    masterTL.to('.hero-rule', {
-      scaleX: 1,
+    // Line 1 reveal: "Make Complexity Work."
+    masterTL.to('.headline-line-1', {
+      y: 0,
       opacity: 1,
-      duration: 0.5,
-      ease: 'power3.out'
-    }, '-=0.45');
-
-    masterTL.to('.hero-headline-masked .mask-inner', {
-      yPercent: 0,
       duration: 0.7,
-      stagger: 0.08,
       ease: 'power3.out'
     }, '-=0.35');
 
-    masterTL.to('.hero-content .button-row', {
+    // Subtle reveal animation for second line: "EXACTly"
+    masterTL.to('.headline-line-2', {
+      yPercent: 0,
+      opacity: 1,
       scale: 1,
+      duration: 0.95,
+      ease: 'power3.out'
+    }, '-=0.35');
+
+    // Accent swoosh draws underneath EXACTly
+    masterTL.to('.headline-swoosh-accent', {
+      scaleX: 1,
+      opacity: 1,
+      duration: 0.7,
+      ease: 'power2.out'
+    }, '-=0.45');
+
+    // Hero CTA button fades up
+    masterTL.to('.header-hero-cta', {
+      y: 0,
       opacity: 1,
       duration: 0.5,
       ease: 'power3.out'
-    }, '-=0.45');
-
-    masterTL.to('.hero-image', {
-      scale: 1,
-      opacity: 1,
-      duration: 0.7,
-      ease: 'power3.out',
-      onComplete: () => {
-        gsap.to('.hero-image img', {
-          y: 6,
-          duration: 4.5,
-          ease: 'sine.inOut',
-          repeat: -1,
-          yoyo: true
-        });
-      }
-    }, '-=0.6');
+    }, '-=0.35');
   }
 
   // PHASE 4 — SCROLL REVEALS (ScrollTrigger for downstream sections)
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-    // Feature cards reveal on scroll
+    // Feature cards reveal on scroll (carousel cards are driven by the pinned track)
     gsap.utils.toArray('.feature-card').forEach((card) => {
+      if (card.classList.contains('service-carousel-card')) return;
       gsap.fromTo(card, {
         y: 40,
         opacity: 0
@@ -166,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Section headers reveal
-    gsap.utils.toArray('.filter-header, .about-frame').forEach((el) => {
+    gsap.utils.toArray('.why-exact').forEach((el) => {
       gsap.fromTo(el, {
         y: 30,
         opacity: 0
@@ -184,10 +187,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 1. Theme Toggle (Light Linen Canvas <-> Dark Canvas)
+  // 1. Theme Toggle & Dynamic Logo Switcher (White Mode <-> Dark Mode)
   const themeToggleBtn = document.getElementById('theme-toggle');
   const sunIcon = themeToggleBtn?.querySelector('.sun-icon');
   const moonIcon = themeToggleBtn?.querySelector('.moon-icon');
+
+  const updateThemeLogos = () => {
+    const navLogoImgs = document.querySelectorAll('.nav-logo-img');
+    const footerLogoImgs = document.querySelectorAll('.footer-logo-img');
+
+    navLogoImgs.forEach(img => {
+      img.src = 'assets/exact_logo-removebg-preview.png';
+    });
+
+    footerLogoImgs.forEach(img => {
+      img.src = 'assets/exact_logo-removebg-preview.png';
+    });
+  };
+
+  // Sync logos on initial page load
+  updateThemeLogos();
 
   themeToggleBtn?.addEventListener('click', () => {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -200,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (sunIcon) sunIcon.style.display = 'none';
       if (moonIcon) moonIcon.style.display = 'block';
     }
+    updateThemeLogos();
   });
 
   // 2. Orbiting Photo Animation Engine
@@ -345,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
     expandObserver.observe(filmSection);
   }
 
-  // EXACT Solutions Portfolio Detailed Data Repository (4 Master Pillars)
+  // EXACT Solutions Portfolio Detailed Data Repository
   const exactSolutionsData = {
     "1": {
       title: "Enterprise Integration & API Architecture",
@@ -404,50 +424,287 @@ document.addEventListener('DOMContentLoaded', () => {
       impact: "Reduce operational turnaround times by up to 70% while ensuring 100% compliance and team enablement."
     },
     "5": {
-      title: "Security, Identity & Observability",
-      categoryBadge: "SECURITY & OBSERVABILITY",
-      overview: "EXACT hardens the platforms it delivers — identity, access, monitoring, and the visibility teams need to run them safely.",
+      title: "Cybersecurity & Risk Control",
+      categoryBadge: "CYBERSECURITY & RISK",
+      overview: "EXACT protects integration points, identities, and hybrid platforms with controlled access, monitored exposure, and security practices that travel with the architecture.",
       image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
-      technologies: ["Identity & Access", "OAuth 2.0 / mTLS", "Dynatrace", "IBM Security", "SIEM", "Zero Trust"],
+      technologies: ["OAuth 2.0 / mTLS", "API Gateways", "Identity & Access", "Cloud Security", "IBM API Connect", "Zero Trust"],
       features: [
-        "Identity, access, and privileged-control design across hybrid estates",
-        "Observability for applications, APIs, and infrastructure already in production",
-        "Monitoring, alerting, and response paths the operations team can actually run",
-        "Security review tied to the same lifecycle as design, build, and handover"
+        "Security assessment across APIs, integrations, and hybrid platforms",
+        "Identity, access, and encrypted service-to-service controls",
+        "Gateway policies for exposure, throttling, and threat filtering",
+        "Handover of operating controls, runbooks, and response routines"
       ],
-      impact: "Production systems stay visible, controlled, and ready to operate."
+      impact: "Reduce exposed integration risk while keeping delivery moving across cloud and on-premises systems."
     },
     "6": {
-      title: "Managed Support & Enablement",
-      categoryBadge: "MANAGED SUPPORT",
-      overview: "EXACT stays after go-live with structured support, maintenance, and the training that lets client teams run what was built.",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
-      technologies: ["ManageEngine", "Patch Management", "Runbooks", "Knowledge Transfer", "ITSM"],
+      title: "Observability & Operations",
+      categoryBadge: "OBSERVABILITY & OPERATIONS",
+      overview: "EXACT gives operations teams a clear view of performance, availability, and handover so platforms stay measurable after go-live.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      technologies: ["Dynatrace APM", "IBM WebSphere", "Red Hat OpenShift", "Service Monitoring", "Runbooks", "HA Operations"],
       features: [
-        "Maintenance windows, patches, and operational care after go-live",
-        "Runbooks and handover so ownership is clear",
-        "Admin enablement and hands-on training for the teams who will run the platform",
-        "A support path that matches the way the system was designed and delivered"
+        "Application and infrastructure monitoring with actionable baselines",
+        "Bottleneck tracing across integration, cloud, and automation flows",
+        "Availability, capacity, and incident routines for hybrid estates",
+        "Structured operational handover with documented ownership"
       ],
-      impact: "The platform keeps performing with the same discipline it was delivered with."
+      impact: "Keep production measurable, with faster diagnosis and a clean handover into day-to-day operations."
     }
   };
 
-  // Service slider — one card at a time, in the direction of the arrows
-  const serviceTrack = document.getElementById('feature-grid');
-  const scrollServices = (direction) => {
-    if (!serviceTrack) return;
-    const card = serviceTrack.querySelector('.feature-card');
-    const gap = 22;
-    const distance = (card ? card.getBoundingClientRect().width : 360) + gap;
-    serviceTrack.scrollBy({ left: direction * distance, behavior: 'smooth' });
-  };
-  document.getElementById('services-prev')?.addEventListener('click', () => scrollServices(-1));
-  document.getElementById('services-next')?.addEventListener('click', () => scrollServices(1));
-
-  // 5. Category Filtering
+  // 5. Services showcase — pinned vertical scroll drives a right-to-left card track
+  const servicesSection = document.getElementById('services-carousel-section');
+  const carouselTrack = document.getElementById('solutions-carousel-track');
+  const carouselIndicator = document.getElementById('carousel-page-indicator');
   const filterPills = document.querySelectorAll('#category-filters .tag-pill');
   const featureCards = document.querySelectorAll('.feature-card');
+
+  let isDown = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+  let dragDistance = 0;
+  let isDraggingMoved = false;
+  let lastX = 0;
+  let velocity = 0;
+  let momentumID = null;
+  let servicesScroll = null;
+
+  const getServiceCards = () => (
+    carouselTrack ? [...carouselTrack.querySelectorAll('.service-carousel-card')] : []
+  );
+
+  const getTrackEnd = () => {
+    const cards = getServiceCards();
+    if (!cards.length) return 0;
+    const last = cards[cards.length - 1];
+    return last.offsetLeft + last.offsetWidth;
+  };
+
+  const updatePinnedIndicator = () => {
+    if (!carouselTrack || !carouselIndicator || !servicesSection) return;
+    const cards = getServiceCards();
+    if (!cards.length) {
+      carouselIndicator.textContent = '1/1';
+      return;
+    }
+    const view = servicesSection.getBoundingClientRect();
+    let best = 0;
+    let bestVisible = -1;
+    cards.forEach((card, index) => {
+      const rect = card.getBoundingClientRect();
+      const visible = Math.min(rect.right, view.right) - Math.max(rect.left, view.left);
+      if (visible > bestVisible) {
+        bestVisible = visible;
+        best = index;
+      }
+    });
+    carouselIndicator.textContent = `${bestVisible > 8 ? best + 1 : 1}/${cards.length}`;
+  };
+
+  const initPinnedServicesScroll = () => {
+    const hero = document.getElementById('hero');
+    if (!hero || !servicesSection || !carouselTrack) return null;
+    if (!servicesSection.classList.contains('is-scroll-driven')) return null;
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+      servicesSection.classList.remove('is-scroll-driven');
+      return null;
+    }
+
+    const viewWidth = () => hero.clientWidth || window.innerWidth;
+    const nav = document.getElementById('main-nav');
+
+    const applyCardPanels = (trackX) => {
+      const viewW = viewWidth();
+      getServiceCards().forEach((card) => {
+        const cardX = card.offsetLeft + trackX;
+        const start = viewW * 0.92;
+        const end = Math.min(40, viewW * 0.05);
+        const t = Math.min(1, Math.max(0, (start - cardX) / Math.max(1, start - end)));
+        const imagePct = 58 + 10 * t;
+        card.style.gridTemplateRows = imagePct + '% ' + (100 - imagePct) + '%';
+        const img = card.querySelector('.card-bg-img');
+        if (img) img.style.transform = 'scale(' + (1.06 - 0.06 * t).toFixed(4) + ')';
+      });
+    };
+
+    const applyTrack = () => {
+      const pin = ScrollTrigger.getById('servicesPin');
+      const viewW = viewWidth();
+      const trackEnd = getTrackEnd();
+      const startX = viewW;
+      const endX = viewW - trackEnd;
+
+      if (!pin) {
+        gsap.set(carouselTrack, { x: startX, force3D: true });
+        applyCardPanels(startX);
+        updatePinnedIndicator();
+        return;
+      }
+
+      const distance = Math.max(1, pin.end - pin.start);
+      const progress = Math.min(1, Math.max(0, (pin.scroll() - pin.start) / distance));
+      const x = startX + (endX - startX) * progress;
+      gsap.set(carouselTrack, { x, force3D: true });
+      applyCardPanels(x);
+
+      if (nav && !document.body.classList.contains('is-loading')) {
+        const navFade = Math.min(1, Math.max(0, (progress - 0.004) / 0.05));
+        gsap.set(nav, { autoAlpha: 1 - navFade });
+      }
+
+      updatePinnedIndicator();
+    };
+
+    ScrollTrigger.create({
+      id: 'servicesPin',
+      trigger: hero,
+      start: 'top top',
+      end: () => '+=' + Math.max(1, getTrackEnd()),
+      pin: true,
+      pinSpacing: true,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+      onUpdate: applyTrack,
+      onRefresh: applyTrack
+    });
+
+    applyTrack();
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+
+    const scrollToShift = (targetX) => {
+      const pin = ScrollTrigger.getById('servicesPin');
+      if (!pin) return;
+      const viewW = viewWidth();
+      const trackEnd = getTrackEnd();
+      const startX = viewW;
+      const endX = viewW - trackEnd;
+      const x = Math.max(Math.min(startX, endX), Math.min(Math.max(startX, endX), targetX));
+      const distance = Math.max(1, pin.end - pin.start);
+      const progress = (startX - x) / Math.max(1, startX - endX);
+      const top = pin.start + progress * distance;
+      if (lenis) {
+        lenis.scrollTo(top, { duration: 1.05, force: true });
+      } else {
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    };
+
+    return {
+      scrollToCard(card) {
+        if (!card) return;
+        scrollToShift(-card.offsetLeft);
+      },
+      scrollToStart() {
+        scrollToShift(0);
+      }
+    };
+  };
+
+  servicesScroll = initPinnedServicesScroll();
+
+  const updateCarouselIndicator = () => {
+    if (servicesScroll) {
+      updatePinnedIndicator();
+      return;
+    }
+    if (!carouselTrack || !carouselIndicator) return;
+    const scrollLeft = carouselTrack.scrollLeft;
+    const maxScroll = carouselTrack.scrollWidth - carouselTrack.clientWidth;
+
+    if (maxScroll <= 10) {
+      carouselIndicator.textContent = '1/1';
+      return;
+    }
+
+    const firstCard = carouselTrack.querySelector('.service-carousel-card');
+    const cardStep = firstCard ? firstCard.offsetWidth + 27 : 470;
+    const totalPages = Math.max(2, Math.round(maxScroll / cardStep) + 1);
+    const currentPage = Math.min(
+      totalPages,
+      Math.max(1, Math.round((scrollLeft / maxScroll) * (totalPages - 1)) + 1)
+    );
+    carouselIndicator.textContent = `${currentPage}/${totalPages}`;
+  };
+
+  if (carouselTrack && !servicesScroll) {
+    carouselTrack.addEventListener('scroll', updateCarouselIndicator, { passive: true });
+    window.addEventListener('resize', updateCarouselIndicator);
+    setTimeout(updateCarouselIndicator, 150);
+
+    // Mouse Drag & Hold Engine ("grab the line and go right or left")
+    const onMouseDown = (e) => {
+      if (e.button !== 0) return; // Only primary mouse button
+      isDown = true;
+      isDraggingMoved = false;
+      dragDistance = 0;
+      startX = e.pageX;
+      lastX = e.pageX;
+      startScrollLeft = carouselTrack.scrollLeft;
+      velocity = 0;
+      if (momentumID) cancelAnimationFrame(momentumID);
+
+      carouselTrack.classList.add('is-dragging');
+    };
+
+    const onMouseMove = (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const currentX = e.pageX;
+      const walk = currentX - startX;
+      dragDistance = Math.abs(walk);
+
+      velocity = currentX - lastX;
+      lastX = currentX;
+
+      if (dragDistance > 6) {
+        isDraggingMoved = true;
+      }
+
+      carouselTrack.scrollLeft = startScrollLeft - walk;
+    };
+
+    const onMouseUp = () => {
+      if (!isDown) return;
+      isDown = false;
+      carouselTrack.classList.remove('is-dragging');
+
+      // Keep isDraggingMoved true momentarily to prevent accidental card click triggers
+      if (dragDistance > 6) {
+        setTimeout(() => {
+          isDraggingMoved = false;
+          dragDistance = 0;
+        }, 80);
+      } else {
+        isDraggingMoved = false;
+        dragDistance = 0;
+      }
+
+      // Smooth inertia momentum glide
+      if (Math.abs(velocity) > 2) {
+        let currentVelocity = velocity * 1.6;
+        const stepMomentum = () => {
+          if (Math.abs(currentVelocity) < 0.5) {
+            cancelAnimationFrame(momentumID);
+            return;
+          }
+          carouselTrack.scrollLeft -= currentVelocity;
+          currentVelocity *= 0.92;
+          momentumID = requestAnimationFrame(stepMomentum);
+        };
+        momentumID = requestAnimationFrame(stepMomentum);
+      }
+    };
+
+    carouselTrack.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+
+    // Prevent default drag of images/links
+    carouselTrack.addEventListener('dragstart', (e) => e.preventDefault());
+  } else if (carouselTrack) {
+    carouselTrack.addEventListener('dragstart', (e) => e.preventDefault());
+  }
 
   filterPills.forEach(pill => {
     pill.addEventListener('click', () => {
@@ -455,15 +712,24 @@ document.addEventListener('DOMContentLoaded', () => {
       pill.classList.add('active');
 
       const filterValue = pill.dataset.filter;
-
-      featureCards.forEach(card => {
-        const categories = card.dataset.category || '';
-        const show = filterValue === 'all' || categories.includes(filterValue);
-        card.classList.toggle('is-filtered-out', !show);
-        if (show && typeof gsap !== 'undefined') {
-          gsap.fromTo(card, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' });
+      if (servicesScroll) {
+        if (filterValue === 'all') {
+          servicesScroll.scrollToStart();
+        } else {
+          const targetCard = carouselTrack?.querySelector(`[data-category="${filterValue}"]`);
+          servicesScroll.scrollToCard(targetCard);
         }
-      });
+        return;
+      }
+
+      if (filterValue === 'all') {
+        carouselTrack?.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        const targetCard = carouselTrack?.querySelector(`[data-category="${filterValue}"]`);
+        if (targetCard) {
+          targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        }
+      }
     });
   });
 
@@ -513,10 +779,8 @@ document.addEventListener('DOMContentLoaded', () => {
       modalFeatureList.innerHTML = data.features.map(f => `<li>${f}</li>`).join('');
     }
 
-    const modalScroll = exactModal?.querySelector('.exact-modal-body');
-    const modalLayout = exactModal?.querySelector('.exact-modal-layout');
-    if (modalScroll) modalScroll.scrollTop = 0;
-    if (modalLayout) modalLayout.scrollTop = 0;
+    const modalBody = exactModal?.querySelector('.exact-modal-body');
+    if (modalBody) modalBody.scrollTop = 0;
 
     exactModal?.classList.add('active');
     exactModal?.setAttribute('aria-hidden', 'false');
@@ -529,15 +793,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (lenis) lenis.start();
   };
 
-  // Attach click listener to every feature card and inspect button
+  // Attach click listener to every feature card and details link
   featureCards.forEach(card => {
-    card.addEventListener('click', () => {
+    card.addEventListener('click', (e) => {
+      // If user was holding/dragging to move the carousel, prevent opening modal
+      if (isDraggingMoved || dragDistance > 6) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
       const solutionId = card.dataset.solution;
       if (solutionId) openSolutionModal(solutionId);
     });
 
-    const inspectBtn = card.querySelector('.card-inspect-btn');
-    inspectBtn?.addEventListener('click', (e) => {
+    const detailsLink = card.querySelector('.card-details-link');
+    detailsLink?.addEventListener('click', (e) => {
+      if (isDraggingMoved || dragDistance > 6) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
       e.stopPropagation();
       const solutionId = card.dataset.solution;
       if (solutionId) openSolutionModal(solutionId);
@@ -656,15 +931,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  if (lenis) {
-    lenis.on('scroll', updateActiveSection);
-  } else {
-    window.addEventListener('scroll', updateActiveSection, { passive: true });
-  }
-  window.addEventListener('resize', updateActiveSection);
-  updateActiveSection();
-  if (document.fonts?.ready) {
-    document.fonts.ready.then(updateActiveSection);
-  }
+  document.getElementById('btn-hero-request-demo')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    showToast('Demo request logged for EXACT Digital Platform.');
+  });
 
 });
