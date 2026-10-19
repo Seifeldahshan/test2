@@ -740,12 +740,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     featureCards.forEach(card => {
       const label = card.querySelector('.card-label')?.textContent.toLowerCase() || '';
-      const meta = card.querySelector('.card-meta')?.textContent.toLowerCase() || '';
-      if (label.includes(query) || meta.includes(query)) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
+      const meta = card.querySelector('.service-blurb')?.textContent.toLowerCase() || '';
+      card.classList.toggle('is-filtered-out', !(label.includes(query) || meta.includes(query)));
     });
   });
 
@@ -866,13 +862,73 @@ document.addEventListener('DOMContentLoaded', () => {
     showToast('Solution Brief requested! An EXACT consultant will contact you shortly.');
   });
 
-  document.getElementById('btn-add-tile')?.addEventListener('click', () => {
-    showToast('Consultation request initiated. Our architecture team will be in touch.');
-  });
-
-  document.getElementById('btn-request-demo')?.addEventListener('click', (e) => {
+  const requestDemo = (e) => {
     e.preventDefault();
-    showToast('Demo request logged for EXACT Digital Platform.');
+    showToast('Demo request logged. An EXACT consultant will be in touch.');
+  };
+
+  document.getElementById('btn-request-demo')?.addEventListener('click', requestDemo);
+  document.getElementById('btn-hero-demo')?.addEventListener('click', requestDemo);
+
+  // Mark the nav link for the section currently in view
+  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+  const navIndicator = document.querySelector('.nav-indicator');
+  const navSections = navLinks
+    .map((link) => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean)
+    .sort((a, b) => (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1));
+
+  const placeIndicator = (link) => {
+    if (!navIndicator || !link) {
+      if (navIndicator) navIndicator.style.opacity = '0';
+      return;
+    }
+    const parent = link.parentElement;
+    const linkRect = link.getBoundingClientRect();
+    const parentRect = parent.getBoundingClientRect();
+    navIndicator.style.width = `${linkRect.width}px`;
+    navIndicator.style.transform = `translateX(${linkRect.left - parentRect.left}px)`;
+    navIndicator.style.opacity = '1';
+  };
+
+  const setActiveLink = (id) => {
+    let active = null;
+    navLinks.forEach((link) => {
+      const match = link.getAttribute('href') === `#${id}`;
+      link.classList.toggle('active', match);
+      if (match) {
+        link.setAttribute('aria-current', 'true');
+        active = link;
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+    placeIndicator(active);
+  };
+
+  const updateActiveSection = () => {
+    const markLine = 140;
+    let current = '';
+    navSections.forEach((section) => {
+      if (section.getBoundingClientRect().top <= markLine) {
+        current = section.id;
+      }
+    });
+    setActiveLink(current);
+  };
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      setActiveLink(target.id);
+      if (lenis) {
+        lenis.scrollTo(target, { offset: -110 });
+      } else {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   });
 
   document.getElementById('btn-hero-request-demo')?.addEventListener('click', (e) => {
