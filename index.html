@@ -8,11 +8,11 @@
   <meta name="description"
     content="Tech delivers enterprise-grade cloud infrastructure, AI integration, and cybersecurity solutions that scale with your business.">
 
-  <!-- Google Fonts: Fraunces (Serif with optical size and weight 300-500) & Inter -->
+  <!-- Source Sans 3 — professional sans for the whole site -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Inter:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
@@ -24,8 +24,9 @@
   <div class="preloader-panel preloader-panel-1">
     <div class="preloader-content">
       <div class="preloader-brand">
-        <img src="assets/logo-removebg-preview.png" alt="EXACT Digital Solutions"
-          class="brand-logo-img preloader-logo-img">
+        <span class="logo-crop preloader-logo">
+          <img src="assets/exact-logo-bgremove.png" alt="EXACT Digital Solutions">
+        </span>
       </div>
     </div>
   </div>
@@ -36,14 +37,18 @@
   <div class="nav-pill">
     <!-- 8-dot cluster logo -->
     <a href="#" class="nav-brand" aria-label="EXACT Home">
-      <img src="assets/logo-removebg-preview.png" alt="EXACT Digital Solutions" class="brand-logo-img nav-logo-img">
+      <span class="logo-crop nav-logo">
+        <img src="assets/exact-logo-bgremove.png" alt="EXACT Digital Solutions">
+      </span>
     </a>
 
-    <!-- Navigation links -->
+    <!-- Navigation links, centered in the pill -->
     <div class="nav-links">
-      <a href="#solutions" class="nav-link active">Solutions</a>
+      <span class="nav-indicator" aria-hidden="true"></span>
+      <a href="#solutions" class="nav-link">Our Services</a>
+      <a href="#partners" class="nav-link">Partners</a>
       <a href="#about" class="nav-link">About</a>
-      <a href="#careers" class="nav-link">Careers</a>
+      <a href="#references" class="nav-link">References</a>
     </div>
 
     <!-- Action Cluster -->
@@ -80,18 +85,14 @@
 
     <!-- Hero Left Content -->
     <div class="hero-content">
-      <span class="eyebrow-label">ABOUT EXACT</span>
+      <span class="hero-rule" aria-hidden="true"></span>
       <h1 class="display-headline hero-headline-masked">
-        <span class="mask-line"><span class="mask-inner">Driven by insight.</span></span>
-        <span class="mask-line"><span class="mask-inner">Focused on results.</span></span>
+        <span class="mask-line"><span class="mask-inner">No guesswork.</span></span>
+        <span class="mask-line"><span class="mask-inner">Just Exact.</span></span>
       </h1>
-      <p class="hero-subtext">EXACT helps organizations modernize technology, improve operational efficiency, and
-        accelerate digital transformation through consulting, architecture, integration, data, AI, cloud, and ongoing
-        support.</p>
 
       <div class="button-row">
-        <a href="#solutions" class="btn btn-primary" id="btn-hero-primary">Explore Solutions</a>
-        <a href="#about" class="btn btn-secondary" id="btn-hero-secondary">Why EXACT</a>
+        <button class="btn btn-primary" id="btn-hero-demo" type="button">Request a Demo</button>
       </div>
     </div>
 
@@ -120,122 +121,218 @@
     </div>
   </section>
 
-  <!-- Filter & Curation Bar -->
-  <section class="filter-section" id="solutions">
-    <div class="filter-header">
-      <div class="filter-title-group">
-        <h2 class="section-heading">Our Core Solutions</h2>
-        <p class="section-sub">Comprehensive digital engineering across integration, AI platforms, cloud modernization, and process automation.</p>
-      </div>
-      <div class="filter-tags" id="category-filters">
-        <button class="tag-pill active" data-filter="all">All Solutions</button>
-        <button class="tag-pill" data-filter="integration">Integration & Middleware</button>
-        <button class="tag-pill" data-filter="data-ai">Data & AI</button>
-        <button class="tag-pill" data-filter="cloud">Cloud & Infrastructure</button>
-        <button class="tag-pill" data-filter="automation">Automation & Process</button>
+  
+
+
+  <!-- Our Services -->
+  <section class="services-section" id="solutions">
+    <div class="services-head">
+      <div class="services-intro">
+        <h2 class="services-title">Our Services</h2>
+        <p class="services-lead">Six practices, carried as one delivery — from the first architecture through the support that follows go-live.</p>
       </div>
     </div>
-  </section>
 
-  <!-- Four-Pillar Feature Grid for EXACT Portfolio -->
-  <section class="feature-grid-section">
-    <div class="feature-grid" id="feature-grid">
+    <div class="service-stage">
+      <button class="service-arrow service-arrow--prev" id="services-prev" type="button" aria-label="Previous services">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6 6 6"></path></svg>
+      </button>
+      <button class="service-arrow service-arrow--next" id="services-next" type="button" aria-label="Next services">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"></path></svg>
+      </button>
 
-      <!-- Pillar 1: Enterprise Integration & API Architecture -->
+    <div class="feature-grid service-index" id="feature-grid">
       <article class="feature-card" data-category="integration" data-solution="1">
-        <div class="card-inner-frame">
-          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80"
-            alt="Enterprise Integration & API Architecture" loading="lazy">
-          <div class="card-overlay-gradient"></div>
-          <div class="card-content-bottom">
-            <span class="card-category-tag">Enterprise Integration</span>
-            <h3 class="card-label">Enterprise Integration & API Architecture</h3>
-            <button class="card-inspect-btn">Explore Solution</button>
-          </div>
+        <div class="service-visual">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80"
+            alt="" loading="lazy">
+        </div>
+        <div class="service-body">
+          <h3 class="card-label">Enterprise Integration &amp; API Architecture</h3>
+          <p class="service-blurb">APIs, messaging, and the connections between the systems that already run the business.</p>
+          <button class="card-inspect-btn" type="button">View service</button>
         </div>
       </article>
 
-      <!-- Pillar 2: Data Platforms, Governance & AI Enablement -->
       <article class="feature-card" data-category="data-ai" data-solution="2">
-        <div class="card-inner-frame">
-          <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=1200&q=80"
-            alt="Data Platforms, Governance & AI Enablement" loading="lazy">
-          <div class="card-overlay-gradient"></div>
-          <div class="card-content-bottom">
-            <span class="card-category-tag">AI & Enterprise Data</span>
-            <h3 class="card-label">Data Platforms, Governance & AI Enablement</h3>
-            <button class="card-inspect-btn">Explore Solution</button>
-          </div>
+        <div class="service-visual">
+          <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=900&q=80"
+            alt="" loading="lazy">
+        </div>
+        <div class="service-body">
+          <h3 class="card-label">Data Platforms, Governance &amp; AI Enablement</h3>
+          <p class="service-blurb">Governed data and AI shaped so the insight can be trusted, operated, and put to work.</p>
+          <button class="card-inspect-btn" type="button">View service</button>
         </div>
       </article>
 
-      <!-- Pillar 3: Cloud Infrastructure & Hybrid Modernization -->
       <article class="feature-card" data-category="cloud" data-solution="3">
-        <div class="card-inner-frame">
-          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
-            alt="Cloud Infrastructure & Hybrid Modernization" loading="lazy">
-          <div class="card-overlay-gradient"></div>
-          <div class="card-content-bottom">
-            <span class="card-category-tag">Cloud & Hybrid</span>
-            <h3 class="card-label">Cloud Infrastructure & Hybrid Modernization</h3>
-            <button class="card-inspect-btn">Explore Solution</button>
-          </div>
+        <div class="service-visual">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80"
+            alt="" loading="lazy">
+        </div>
+        <div class="service-body">
+          <h3 class="card-label">Cloud Infrastructure &amp; Hybrid Modernization</h3>
+          <p class="service-blurb">Hybrid cloud and infrastructure modernization that stays secure, operable, and ready to run.</p>
+          <button class="card-inspect-btn" type="button">View service</button>
         </div>
       </article>
 
-      <!-- Pillar 4: Business Process Transformation & Automation -->
       <article class="feature-card" data-category="automation" data-solution="4">
-        <div class="card-inner-frame">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
-            alt="Business Process Transformation & Automation" loading="lazy">
-          <div class="card-overlay-gradient"></div>
-          <div class="card-content-bottom">
-            <span class="card-category-tag">Process Automation</span>
-            <h3 class="card-label">Process Transformation & Automation</h3>
-            <button class="card-inspect-btn">Explore Solution</button>
-          </div>
+        <div class="service-visual">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
+            alt="" loading="lazy">
+        </div>
+        <div class="service-body">
+          <h3 class="card-label">Process Transformation &amp; Automation</h3>
+          <p class="service-blurb">Workflows redesigned and automated, from the first map through handover and enablement.</p>
+          <button class="card-inspect-btn" type="button">View service</button>
         </div>
       </article>
 
+      <article class="feature-card" data-category="security" data-solution="5">
+        <div class="service-visual">
+          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80"
+            alt="" loading="lazy">
+        </div>
+        <div class="service-body">
+          <h3 class="card-label">Security, Identity &amp; Observability</h3>
+          <p class="service-blurb">Identity, access, and monitoring so the platforms in production stay visible and controlled.</p>
+          <button class="card-inspect-btn" type="button">View service</button>
+        </div>
+      </article>
+
+      <article class="feature-card" data-category="support" data-solution="6">
+        <div class="service-visual">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80"
+            alt="" loading="lazy">
+        </div>
+        <div class="service-body">
+          <h3 class="card-label">Managed Support &amp; Enablement</h3>
+          <p class="service-blurb">Ongoing care, maintenance, and the training that lets your team run what was built.</p>
+          <button class="card-inspect-btn" type="button">View service</button>
+        </div>
+      </article>
+    </div>
     </div>
   </section>
 
-  <!-- Platform Stats & Value Proposition Section -->
-  <section class="studio-section" id="about">
-    <div class="studio-card">
-      <div class="studio-info">
-        <span class="eyebrow-label">WHY EXACT</span>
-        <h2 class="display-heading-sm">One partner across consulting, architecture, and delivery.</h2>
-        <p class="studio-body">We combine premier enterprise technology platforms—IBM, Red Hat, Automation Anywhere,
-          ManageEngine, and Dynatrace—with seasoned consultants and structured lifecycle practices to deliver measurable
-          outcomes.</p>
-        <div class="button-row">
-          <button class="btn btn-primary" id="btn-add-tile">Schedule a Consultation</button>
-          <button class="btn btn-secondary" id="btn-reset-collage">View Delivery Framework</button>
-        </div>
+    <!-- Technology Partners -->
+    <section class="partners-section" id="partners">
+      <div class="partners-intro">
+        <span class="eyebrow-label">Partners</span>
+        <h2 class="section-heading">Platforms we design, deliver, and support.</h2>
+        <p class="section-sub">EXACT works on enterprise technology our clients already run — pairing platform depth with a structured delivery lifecycle.</p>
       </div>
-      <div class="studio-stat-box">
-        <div class="stat-item">
-          <span class="stat-num">5-Phase</span>
-          <span class="stat-desc">Delivery Lifecycle</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">100%</span>
-          <span class="stat-desc">Structured Handover</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">Enterprise</span>
-          <span class="stat-desc">Multi-Cloud Support</span>
-        </div>
+  
+      <div class="partners-grid">
+        <article class="partner-card partner-card--ibm">
+          <div class="partner-logo-plate">
+            <img src="assets/ibm.jpg" alt="IBM">
+          </div>
+          <div class="partner-copy">
+            <span class="partner-role">Hybrid cloud, integration &amp; AI</span>
+            <h3 class="partner-name">IBM</h3>
+            <p>IBM underpins hybrid cloud, enterprise integration, and governed AI for institutions that need resilience as much as speed. EXACT architects and implements on that stack — from APIs and messaging to data platforms and watsonx — so modernization stays secure, operable, and ready to run.</p>
+            <ul class="partner-points">
+              <li>Hybrid cloud architecture and infrastructure modernization</li>
+              <li>Integration across APIs, messaging, and secure connectivity</li>
+              <li>Data platforms and watsonx for governed enterprise AI</li>
+            </ul>
+          </div>
+        </article>
+  
+        <article class="partner-card partner-card--uipath">
+          <div class="partner-logo-plate">
+            <img src="assets/uipath.jpg" alt="UiPath">
+          </div>
+          <div class="partner-copy">
+            <span class="partner-role">Intelligent automation</span>
+            <h3 class="partner-name">UiPath</h3>
+            <p>UiPath brings robotic process automation, process intelligence, and document understanding into one enterprise platform. EXACT uses it to take repetitive work out of operations — with orchestration, controls, and a clear path from the first process to a production program.</p>
+            <ul class="partner-points">
+              <li>Attended and unattended automation across core operations</li>
+              <li>Process intelligence to find, measure, and prioritize work</li>
+              <li>Document understanding for high-volume, rules-heavy workflows</li>
+            </ul>
+          </div>
+        </article>
       </div>
+    </section>
+
+  <!-- About EXACT -->
+  <section class="about-section" id="about">
+    <div class="about-frame">
+      <div class="about-head">
+        <span class="eyebrow-label">About EXACT</span>
+        <span class="about-line" aria-hidden="true"></span>
+      </div>
+
+      <div class="about-layout">
+        <h2 class="about-title">Modernize with clarity.<br>Deliver with discipline.</h2>
+        <p class="about-lead">EXACT helps organizations modernize technology, improve operational efficiency, and accelerate digital transformation through consulting, architecture, integration, data, AI, cloud, and ongoing support.</p>
+      </div>
+
+      <ol class="about-threads">
+        <li>
+          <span class="about-num">01</span>
+          <h3>Consulting</h3>
+          <p>Architecture and direction shaped around the systems, constraints, and outcomes already in front of you.</p>
+        </li>
+        <li>
+          <span class="about-num">02</span>
+          <h3>Delivery</h3>
+          <p>Integration, data, AI, and cloud carried from design through a structured build and a clean handover.</p>
+        </li>
+        <li>
+          <span class="about-num">03</span>
+          <h3>Continuity</h3>
+          <p>Support that stays after go-live, so the platform keeps running with the same care it was built with.</p>
+        </li>
+      </ol>
     </div>
+  </section>
+
+  <!-- Client References -->
+  <section class="references-section" id="references">
+    <div class="references-intro">
+      <span class="eyebrow-label">References</span>
+      <h2 class="section-heading">Institutions that have worked with EXACT.</h2>
+      <p class="section-sub">Banking groups, development finance, professional training, and national infrastructure — organizations where reliability, control, and delivery discipline matter.</p>
+    </div>
+
+    <ul class="references-grid">
+      <li class="reference-card">
+        <img src="assets/qnb.jpg" alt="Qatar National Bank" style="--crop: inset(18% 0% 19% 0%)">
+      </li>
+      <li class="reference-card">
+        <img src="assets/idb.jpg" alt="Industrial Development Bank" style="--crop: inset(26% 20% 31% 19%)">
+      </li>
+      <li class="reference-card">
+        <img src="assets/nbd.jpg" alt="Emirates NBD" style="--crop: inset(28% 8% 24% 8%)">
+      </li>
+      <li class="reference-card">
+        <img src="assets/midbank.jpg" alt="MidBank" style="--crop: inset(10% 22% 14% 22%)">
+      </li>
+      <li class="reference-card">
+        <img src="assets/alexbank.jpg" alt="AlexBank" style="--crop: inset(32% 2% 30% 2%)">
+      </li>
+      <li class="reference-card">
+        <img src="assets/ebi.jpg" alt="Egyptian Banking Institute">
+      </li>
+      <li class="reference-card">
+        <img src="assets/authority%20of%20alex.jpg" alt="Alexandria Port Authority">
+      </li>
+    </ul>
   </section>
 
   <!-- Footer -->
   <footer class="footer-section">
     <div class="footer-top">
       <div class="footer-brand">
-        <span class="brand-name">EXACT</span>
+        <span class="logo-crop footer-logo">
+          <img src="assets/exact-logo-bgremove.png" alt="EXACT Digital Solutions">
+        </span>
       </div>
       <p class="footer-tagline">Modernizing enterprise architecture with speed and precision.</p>
     </div>
@@ -243,9 +340,10 @@
     <div class="footer-bottom">
       <span class="footer-copy">&copy; 2026 EXACT Digital Services. All rights reserved.</span>
       <div class="footer-links">
-        <a href="#solutions" class="footer-link">Solutions</a>
-        <a href="#about" class="footer-link">Methodology</a>
-        <a href="#" class="footer-link">Governance</a>
+        <a href="#solutions" class="footer-link">Our Services</a>
+        <a href="#about" class="footer-link">About</a>
+        <a href="#partners" class="footer-link">Partners</a>
+        <a href="#references" class="footer-link">References</a>
         <a href="#" class="footer-link">Contact</a>
       </div>
     </div>
@@ -253,97 +351,73 @@
 
 </main>
 
-<!-- Rich Full-Page / Slide-Over Interactive Solution Detail Modal -->
+<!-- Service detail folio -->
 <div class="exact-modal-overlay" id="exact-solution-modal" aria-hidden="true">
-  <div class="exact-modal-container">
+  <div class="exact-modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="exact-modal-close" id="close-exact-modal" aria-label="Close detail modal">&times;</button>
 
-    <!-- Top Modal Bar -->
-    <div class="exact-modal-header">
-      <div class="exact-modal-badge-group">
+    <div class="exact-modal-layout" data-lenis-prevent>
+      <div class="exact-modal-media">
+        <img id="modal-hero-img" src="" alt="">
+        <div class="exact-media-gradient"></div>
         <span class="exact-badge" id="modal-category-badge">INTEGRATION</span>
-        <span class="exact-badge-sub">EXACT Digital Services Portfolio</span>
       </div>
-      <button class="exact-modal-close" id="close-exact-modal" aria-label="Close detail modal">&times;</button>
-    </div>
 
-    <!-- Main Scrollable Body -->
-    <div class="exact-modal-body">
+      <div class="exact-modal-body" data-lenis-prevent>
+        <p class="exact-modal-kicker">EXACT service</p>
+        <h2 class="exact-modal-title" id="modal-title">Enterprise Solution Title</h2>
+        <p class="exact-modal-overview" id="modal-overview">Full detailed overview of the EXACT solution offering.</p>
 
-      <!-- Grid Layout: Left Media & Lifecycle / Right Deep Technical Data -->
-      <div class="exact-modal-grid">
-
-        <!-- Left Column -->
-        <div class="exact-modal-left">
-          <div class="exact-modal-media">
-            <img id="modal-hero-img" src="" alt="EXACT Solution Visual">
-            <div class="exact-media-gradient"></div>
-          </div>
-
-          <div class="exact-lifecycle-box">
-            <h4 class="exact-box-title">EXACT Delivery Lifecycle</h4>
-            <div class="exact-lifecycle-steps">
-              <div class="lifecycle-step">
-                <span class="step-num">01</span>
-                <div class="step-text"><strong>Assess:</strong> Objectives, environment, risks & expected ROI.</div>
-              </div>
-              <div class="lifecycle-step">
-                <span class="step-num">02</span>
-                <div class="step-text"><strong>Design:</strong> Target architecture, security & roadmap.</div>
-              </div>
-              <div class="lifecycle-step">
-                <span class="step-num">03</span>
-                <div class="step-text"><strong>Implement:</strong> Configure, develop, integrate & test.</div>
-              </div>
-              <div class="lifecycle-step">
-                <span class="step-num">04</span>
-                <div class="step-text"><strong>Modernize:</strong> Cloud adoption & process optimization.</div>
-              </div>
-              <div class="lifecycle-step">
-                <span class="step-num">05</span>
-                <div class="step-text"><strong>Operate:</strong> Patches, maintenance & knowledge transfer.</div>
-              </div>
+        <div class="exact-lifecycle-box">
+          <h4 class="exact-box-title">How it is delivered</h4>
+          <div class="exact-lifecycle-steps">
+            <div class="lifecycle-step">
+              <span class="step-num">01</span>
+              <div class="step-text"><strong>Assess</strong> Objectives, environment, and risk.</div>
+            </div>
+            <div class="lifecycle-step">
+              <span class="step-num">02</span>
+              <div class="step-text"><strong>Design</strong> Architecture, security, and roadmap.</div>
+            </div>
+            <div class="lifecycle-step">
+              <span class="step-num">03</span>
+              <div class="step-text"><strong>Implement</strong> Configure, build, integrate, and test.</div>
+            </div>
+            <div class="lifecycle-step">
+              <span class="step-num">04</span>
+              <div class="step-text"><strong>Modernize</strong> Cloud adoption and process change.</div>
+            </div>
+            <div class="lifecycle-step">
+              <span class="step-num">05</span>
+              <div class="step-text"><strong>Operate</strong> Care, patches, and handover.</div>
             </div>
           </div>
         </div>
 
-        <!-- Right Column -->
-        <div class="exact-modal-right">
-          <h2 class="exact-modal-title" id="modal-title">Enterprise Solution Title</h2>
-          <p class="exact-modal-overview" id="modal-overview">Full detailed overview of the EXACT solution offering.</p>
-
-          <!-- Enabling Technologies -->
-          <div class="exact-tech-section">
-            <h4 class="exact-box-title">Enabling Platforms & Technologies</h4>
-            <div class="exact-tech-tags" id="modal-tech-tags">
-              <!-- Injected dynamically via JS -->
-            </div>
-          </div>
-
-          <!-- Key Capabilities & Scope -->
+        <div class="exact-modal-split">
           <div class="exact-features-section">
-            <h4 class="exact-box-title">Core Capabilities & Delivery Scope</h4>
-            <ul class="exact-feature-list" id="modal-feature-list">
-              <!-- Injected dynamically via JS -->
-            </ul>
+            <h4 class="exact-box-title">What this covers</h4>
+            <ul class="exact-feature-list" id="modal-feature-list"></ul>
           </div>
 
-          <!-- Value Proposition Impact -->
-          <div class="exact-impact-box">
-            <span class="impact-label">BUSINESS VALUE & OUTCOME</span>
-            <p class="impact-text" id="modal-impact-text">Quantifiable outcome description.</p>
-          </div>
-
-          <!-- Modal Action Cluster -->
-          <div class="exact-modal-actions">
-            <button class="btn btn-primary exact-modal-btn" id="btn-modal-consult">Request Solution Brief</button>
-            <button class="btn btn-secondary exact-modal-btn" id="btn-modal-close-action">Close Detail View</button>
+          <div class="exact-modal-aside">
+            <div class="exact-tech-section">
+              <h4 class="exact-box-title">Platforms</h4>
+              <div class="exact-tech-tags" id="modal-tech-tags"></div>
+            </div>
+            <div class="exact-impact-box">
+              <span class="impact-label">Outcome</span>
+              <p class="impact-text" id="modal-impact-text">Quantifiable outcome description.</p>
+            </div>
           </div>
         </div>
 
+        <div class="exact-modal-actions">
+          <button class="btn btn-primary exact-modal-btn" id="btn-modal-consult" type="button">Request a brief</button>
+          <button class="exact-modal-dismiss" id="btn-modal-close-action" type="button">Close</button>
+        </div>
       </div>
-
     </div>
-
   </div>
 </div>
 

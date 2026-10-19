@@ -42,9 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set initial hidden states to prevent FOUC / flash before sequence starts
     gsap.set('#main-nav', { y: -20, opacity: 0 });
-    gsap.set('.hero-content .eyebrow-label', { y: 20, opacity: 0 });
+    gsap.set('.hero-rule', { scaleX: 0, opacity: 0, transformOrigin: 'left center' });
     gsap.set('.hero-headline-masked .mask-inner', { yPercent: 100 });
-    gsap.set('.hero-subtext', { y: 24, opacity: 0 });
     gsap.set('.hero-content .button-row', { scale: 0.95, opacity: 0 });
     gsap.set('.hero-image', { scale: 1.05, opacity: 0 });
 
@@ -108,8 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
       ease: 'power3.out'
     }, '-=0.4');
 
-    masterTL.to('.hero-content .eyebrow-label', {
-      y: 0,
+    masterTL.to('.hero-rule', {
+      scaleX: 1,
       opacity: 1,
       duration: 0.5,
       ease: 'power3.out'
@@ -120,14 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
       duration: 0.7,
       stagger: 0.08,
       ease: 'power3.out'
-    }, '-=0.4');
-
-    masterTL.to('.hero-subtext', {
-      y: 0,
-      opacity: 1,
-      duration: 0.5,
-      ease: 'power3.out'
-    }, '-=0.5');
+    }, '-=0.35');
 
     masterTL.to('.hero-content .button-row', {
       scale: 1,
@@ -174,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Section headers reveal
-    gsap.utils.toArray('.filter-header, .studio-card').forEach((el) => {
+    gsap.utils.toArray('.filter-header, .about-frame').forEach((el) => {
       gsap.fromTo(el, {
         y: 30,
         opacity: 0
@@ -410,8 +402,48 @@ document.addEventListener('DOMContentLoaded', () => {
         "Hands-on technical enablement, operational handover, and admin training"
       ],
       impact: "Reduce operational turnaround times by up to 70% while ensuring 100% compliance and team enablement."
+    },
+    "5": {
+      title: "Security, Identity & Observability",
+      categoryBadge: "SECURITY & OBSERVABILITY",
+      overview: "EXACT hardens the platforms it delivers — identity, access, monitoring, and the visibility teams need to run them safely.",
+      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+      technologies: ["Identity & Access", "OAuth 2.0 / mTLS", "Dynatrace", "IBM Security", "SIEM", "Zero Trust"],
+      features: [
+        "Identity, access, and privileged-control design across hybrid estates",
+        "Observability for applications, APIs, and infrastructure already in production",
+        "Monitoring, alerting, and response paths the operations team can actually run",
+        "Security review tied to the same lifecycle as design, build, and handover"
+      ],
+      impact: "Production systems stay visible, controlled, and ready to operate."
+    },
+    "6": {
+      title: "Managed Support & Enablement",
+      categoryBadge: "MANAGED SUPPORT",
+      overview: "EXACT stays after go-live with structured support, maintenance, and the training that lets client teams run what was built.",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+      technologies: ["ManageEngine", "Patch Management", "Runbooks", "Knowledge Transfer", "ITSM"],
+      features: [
+        "Maintenance windows, patches, and operational care after go-live",
+        "Runbooks and handover so ownership is clear",
+        "Admin enablement and hands-on training for the teams who will run the platform",
+        "A support path that matches the way the system was designed and delivered"
+      ],
+      impact: "The platform keeps performing with the same discipline it was delivered with."
     }
   };
+
+  // Service slider — one card at a time, in the direction of the arrows
+  const serviceTrack = document.getElementById('feature-grid');
+  const scrollServices = (direction) => {
+    if (!serviceTrack) return;
+    const card = serviceTrack.querySelector('.feature-card');
+    const gap = 22;
+    const distance = (card ? card.getBoundingClientRect().width : 360) + gap;
+    serviceTrack.scrollBy({ left: direction * distance, behavior: 'smooth' });
+  };
+  document.getElementById('services-prev')?.addEventListener('click', () => scrollServices(-1));
+  document.getElementById('services-next')?.addEventListener('click', () => scrollServices(1));
 
   // 5. Category Filtering
   const filterPills = document.querySelectorAll('#category-filters .tag-pill');
@@ -426,13 +458,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       featureCards.forEach(card => {
         const categories = card.dataset.category || '';
-        if (filterValue === 'all' || categories.includes(filterValue)) {
-          card.style.display = 'flex';
-          if (typeof gsap !== 'undefined') {
-            gsap.fromTo(card, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4 });
-          }
-        } else {
-          card.style.display = 'none';
+        const show = filterValue === 'all' || categories.includes(filterValue);
+        card.classList.toggle('is-filtered-out', !show);
+        if (show && typeof gsap !== 'undefined') {
+          gsap.fromTo(card, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' });
         }
       });
     });
@@ -445,12 +474,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     featureCards.forEach(card => {
       const label = card.querySelector('.card-label')?.textContent.toLowerCase() || '';
-      const meta = card.querySelector('.card-meta')?.textContent.toLowerCase() || '';
-      if (label.includes(query) || meta.includes(query)) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
+      const meta = card.querySelector('.service-blurb')?.textContent.toLowerCase() || '';
+      card.classList.toggle('is-filtered-out', !(label.includes(query) || meta.includes(query)));
     });
   });
 
@@ -487,6 +512,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalFeatureList) {
       modalFeatureList.innerHTML = data.features.map(f => `<li>${f}</li>`).join('');
     }
+
+    const modalScroll = exactModal?.querySelector('.exact-modal-body');
+    const modalLayout = exactModal?.querySelector('.exact-modal-layout');
+    if (modalScroll) modalScroll.scrollTop = 0;
+    if (modalLayout) modalLayout.scrollTop = 0;
 
     exactModal?.classList.add('active');
     exactModal?.setAttribute('aria-hidden', 'false');
@@ -557,13 +587,84 @@ document.addEventListener('DOMContentLoaded', () => {
     showToast('Solution Brief requested! An EXACT consultant will contact you shortly.');
   });
 
-  document.getElementById('btn-add-tile')?.addEventListener('click', () => {
-    showToast('Consultation request initiated. Our architecture team will be in touch.');
+  const requestDemo = (e) => {
+    e.preventDefault();
+    showToast('Demo request logged. An EXACT consultant will be in touch.');
+  };
+
+  document.getElementById('btn-request-demo')?.addEventListener('click', requestDemo);
+  document.getElementById('btn-hero-demo')?.addEventListener('click', requestDemo);
+
+  // Mark the nav link for the section currently in view
+  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+  const navIndicator = document.querySelector('.nav-indicator');
+  const navSections = navLinks
+    .map((link) => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean)
+    .sort((a, b) => (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1));
+
+  const placeIndicator = (link) => {
+    if (!navIndicator || !link) {
+      if (navIndicator) navIndicator.style.opacity = '0';
+      return;
+    }
+    const parent = link.parentElement;
+    const linkRect = link.getBoundingClientRect();
+    const parentRect = parent.getBoundingClientRect();
+    navIndicator.style.width = `${linkRect.width}px`;
+    navIndicator.style.transform = `translateX(${linkRect.left - parentRect.left}px)`;
+    navIndicator.style.opacity = '1';
+  };
+
+  const setActiveLink = (id) => {
+    let active = null;
+    navLinks.forEach((link) => {
+      const match = link.getAttribute('href') === `#${id}`;
+      link.classList.toggle('active', match);
+      if (match) {
+        link.setAttribute('aria-current', 'true');
+        active = link;
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+    placeIndicator(active);
+  };
+
+  const updateActiveSection = () => {
+    const markLine = 140;
+    let current = '';
+    navSections.forEach((section) => {
+      if (section.getBoundingClientRect().top <= markLine) {
+        current = section.id;
+      }
+    });
+    setActiveLink(current);
+  };
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      setActiveLink(target.id);
+      if (lenis) {
+        lenis.scrollTo(target, { offset: -110 });
+      } else {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   });
 
-  document.getElementById('btn-request-demo')?.addEventListener('click', (e) => {
-    e.preventDefault();
-    showToast('Demo request logged for EXACT Digital Platform.');
-  });
+  if (lenis) {
+    lenis.on('scroll', updateActiveSection);
+  } else {
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+  }
+  window.addEventListener('resize', updateActiveSection);
+  updateActiveSection();
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(updateActiveSection);
+  }
 
 });
